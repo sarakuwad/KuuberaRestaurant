@@ -1,0 +1,29 @@
+KUUBERA PURE VEG — OWNER PHOTOGRAPH PLACEMENT GUIDE
+====================================================
+
+Place your original WebP or JPG photographs from @_kuubera_ in this folder structure:
+
+1. Primary Brand Section Photos (`assets/images/`):
+   - assets/images/kuubera-hero-interior.webp      (Hero Section Background)
+   - assets/images/kuubera-about-dining.webp       (About Kuubera Editorial Section)
+   - assets/images/kuubera-special-experience.webp (Special Experience Crimson Section)
+
+2. Instagram Gallery Photos (`assets/images/gallery/`):
+   - assets/images/gallery/interior-main.webp
+   - assets/images/gallery/food-dosa.webp
+   - assets/images/gallery/exterior-entrance.webp
+   - assets/images/gallery/family-dining.webp
+   - assets/images/gallery/kitchen-hygiene.webp
+   - assets/images/gallery/scenic-ambience.webp
+   - assets/images/gallery/north-indian-spread.webp
+   - assets/images/gallery/special-occasions.webp
+
+3. Menu & Signature Dish Photos (`assets/images/menu/`):
+   - assets/images/menu/masala-dosa.webp
+   - assets/images/menu/misal-pav.webp
+   - assets/images/menu/paneer-tikka.webp
+   - assets/images/menu/chole-bhature.webp
+   - assets/images/menu/paneer-butter-masala.webp
+   - assets/images/menu/dal-makhani.webp
+
+After placing your images here, update the `imageUrl` or `image` field in `data/restaurantConfig.js`, `data/galleryData.js`, or `data/menuData.js` (or use the visual Owner Admin Studio in the website footer).

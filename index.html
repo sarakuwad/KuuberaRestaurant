@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KUUBERA PURE VEG | Premium Vegetarian Restaurant at Varve Budruk, Khed Shivapur, Pune</title>
+  <meta
+    name="description"
+    content="Discover the joy of pure vegetarian & Jain dining at Kuubera Pure Veg, located at Gat No. 91, Varve Budruk, near Khed Shivapur, Pune. Open daily 7:00 AM – 11:00 PM. Authentic South Indian, North Indian, Punjabi, Chinese & Street Food."
+  />
+  <meta
+    name="keywords"
+    content="Kuubera Pure Veg, Kuubera Restaurant, Pure Veg Restaurant Khed Shivapur, Varve Budruk Restaurant, Jain Food Pune Satara Highway, Family Restaurant Khed Shivapur, @_kuubera_"
+  />
+  <meta name="theme-color" content="#10265C" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:title" content="KUUBERA PURE VEG — Where Every Meal Becomes a Royal Experience" />
+  <meta
+    property="og:description"
+    content="Premium Pure Vegetarian & Jain Family Restaurant at Gat No. 91, Varve Budruk, near Khed Shivapur, Pune. Open Daily 7:00 AM – 11:00 PM."
+  />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Google Fonts: Cormorant Garamond, Playfair Display & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Structured Restaurant Schema Markup (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "KUUBERA PURE VEG",
+    "alternateName": "Kuubera Restaurant",
+    "description": "Discover the joy of pure vegetarian dining at Kuubera. From authentic Indian favourites to delicious multi-cuisine creations, experience food, hospitality and togetherness.",
+    "telephone": "+91-90281-67333",
+    "url": "https://www.instagram.com/_kuubera_/",
+    "sameAs": [
+      "https://www.instagram.com/_kuubera_/"
+    ],
+    "servesCuisine": [
+      "Pure Vegetarian",
+      "South Indian",
+      "North Indian",
+      "Punjabi",
+      "Chinese",
+      "Street Food",
+      "Jain Food"
+    ],
+    "priceRange": "₹350 - ₹400 for two",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Gat No. 91, Tal. Bhor, Varve Budruk, Near Khed Shivapur Toll Plaza",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "postalCode": "412205",
+      "addressCountry": "IN"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "07:00",
+        "closes": "23:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "bestRating": "5",
+      "ratingCount": "1300"
+    }
+  }
+  </script>
+
+  <!-- Local Tailwind CSS Runtime & Brand Palette Configuration -->
+  <script src="assets/vendor/tailwindcss.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            royal: "#10265C",
+            navy: "#091735",
+            gold: "#D4AF37",
+            champagne: "#E8D7A5",
+            crimson: "#8B1726",
+            ivory: "#FFF9EF"
+          },
+          fontFamily: {
+            serif: ["'Playfair Display'", "'Cormorant Garamond'", "Georgia", "serif"],
+            display: ["'Cormorant Garamond'", "'Playfair Display'", "Georgia", "serif"],
+            sans: ["'Montserrat'", "system-ui", "-apple-system", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom Royal Styling, Metallic Gold Gradients & Reduced-Motion Safe Animations -->
+  <style>
+    :root {
+      --color-royal-blue: #10265C;
+      --color-deep-navy: #091735;
+      --color-metallic-gold: #D4AF37;
+      --color-champagne-gold: #E8D7A5;
+      --color-crimson-red: #8B1726;
+      --color-ivory: #FFF9EF;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #091735;
+      color: #FFF9EF;
+      overflow-x: hidden;
+    }
+
+    /* Sophisticated Metallic Gold Text Effect (Not bright yellow) */
+    .gold-metallic-text {
+      background: linear-gradient(
+        135deg,
+        #C59B27 0%,
+        #F5E6AD 28%,
+        #D4AF37 52%,
+        #F7E9B7 74%,
+        #AA8220 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: #D4AF37;
+    }
+
+    /* Animated Gold Underline on Navigation Hover */
+    .nav-gold-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-gold-underline:hover::after,
+    .nav-gold-underline.active-nav::after {
+      transform: scaleX(1);
+    }
+
+    /* Hide Scrollbars for Smooth Horizontal Carousels */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Elegant Entrance & Scroll Animations */
+    @keyframes heroEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scrollDot {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(10px);
+        opacity: 0.35;
+      }
+    }
+
+    @keyframes subtleZoom {
+      0% {
+        transform: scale(1.02);
+      }
+      100% {
+        transform: scale(1.08);
+      }
+    }
+
+    .animate-heroEntrance {
+      animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    .animate-scrollDot {
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+
+    .animate-subtleZoom {
+      animation: subtleZoom 18s ease-in-out infinite alternate;
+    }
+
+    /* Respect Reduced-Motion Accessibility Settings (#11) */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      ::before,
+      ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Print Styles for Full Menu Download */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Root Application Container -->
+  <div id="root"></div>
+
+  <!-- React 18 Local Production Runtime -->
+  <script src="assets/vendor/react.production.min.js"></script>
+  <script src="assets/vendor/react-dom.production.min.js"></script>
+
+  <!-- 1. Owner-Editable Data Files (/data) -->
+  <script src="data/restaurantConfig.js"></script>
+  <script src="data/menuData.js"></script>
+  <script src="data/galleryData.js"></script>
+  <script src="data/reviewsData.js"></script>
+
+  <!-- 2. Modular UI Components (/components) -->
+  <script src="components/BrandElements.js"></script>
+  <script src="components/Layout.js"></script>
+  <script src="components/HeroAndAbout.js"></script>
+  <script src="components/MenuAndSignatures.js"></script>
+  <script src="components/GalleryAndReviews.js"></script>
+  <script src="components/ContactAndModals.js"></script>
+  <script src="components/OwnerAdminDrawer.js"></script>
+  <script src="components/App.js"></script>
+</body>
+</html>
