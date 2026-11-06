@@ -87,28 +87,45 @@
   }
   </script>
 
-  <!-- Local Tailwind CSS Runtime & Brand Palette Configuration -->
-  <script src="assets/vendor/tailwindcss.js"></script>
+  <!-- Tailwind CSS Play CDN (with local fallback) -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            royal: "#10265C",
-            navy: "#091735",
-            gold: "#D4AF37",
-            champagne: "#E8D7A5",
-            crimson: "#8B1726",
-            ivory: "#FFF9EF"
-          },
-          fontFamily: {
-            serif: ["'Playfair Display'", "'Cormorant Garamond'", "Georgia", "serif"],
-            display: ["'Cormorant Garamond'", "'Playfair Display'", "Georgia", "serif"],
-            sans: ["'Montserrat'", "system-ui", "-apple-system", "sans-serif"]
+    if (typeof tailwind === "undefined") {
+      document.write('<script src="./assets/vendor/tailwindcss.js"><\/script>');
+    }
+  </script>
+  <script>
+    if (typeof tailwind !== "undefined") {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              royal: "#10265C",
+              navy: "#091735",
+              gold: "#D4AF37",
+              champagne: "#E8D7A5",
+              crimson: "#8B1726",
+              ivory: "#FFF9EF"
+            },
+            fontFamily: {
+              serif: ["'Playfair Display'", "'Cormorant Garamond'", "Georgia", "serif"],
+              display: ["'Cormorant Garamond'", "'Playfair Display'", "Georgia", "serif"],
+              sans: ["'Montserrat'", "system-ui", "-apple-system", "sans-serif"]
+            }
           }
         }
-      }
-    };
+      };
+    }
+  </script>
+
+  <!-- React 18 & ReactDOM 18 (CDN with local vendor fallback) -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script>
+    if (typeof React === "undefined") {
+      document.write('<script src="./assets/vendor/react.production.min.js"><\/script>');
+      document.write('<script src="./assets/vendor/react-dom.production.min.js"><\/script>');
+    }
   </script>
 
   <!-- Custom Royal Styling, Metallic Gold Gradients & Reduced-Motion Safe Animations -->
@@ -126,6 +143,7 @@
       font-family: 'Montserrat', sans-serif;
       background-color: #091735;
       color: #FFF9EF;
+      margin: 0;
       overflow-x: hidden;
     }
 
@@ -255,27 +273,30 @@
   </style>
 </head>
 <body>
-  <!-- Root Application Container -->
-  <div id="root"></div>
+  <!-- Root Application Container with Instant Fallback Shell -->
+  <div id="root">
+    <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#091735;color:#FFF9EF;text-align:center;padding:24px;border:1px solid rgba(212,175,55,0.4);">
+      <p style="font-family:'Playfair Display',Georgia,serif;font-size:32px;letter-spacing:0.28em;color:#D4AF37;margin:0;font-weight:700;">KUUBERA</p>
+      <p style="font-size:11px;letter-spacing:0.35em;color:#E8D7A5;margin-top:6px;text-transform:uppercase;">PURE VEG • VARVE BUDRUK, PUNE</p>
+      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:28px;color:#FFF9EF;margin-top:24px;letter-spacing:0.08em;">AN EXPERIENCE BEYOND ORDINARY</h1>
+      <p style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:18px;color:#E8D7A5;margin-top:8px;">Where Every Meal Becomes a Royal Experience.</p>
+    </div>
+  </div>
 
-  <!-- React 18 Local Production Runtime -->
-  <script src="assets/vendor/react.production.min.js"></script>
-  <script src="assets/vendor/react-dom.production.min.js"></script>
+  <!-- 1. Owner-Editable Data Files (./data) -->
+  <script src="./data/restaurantConfig.js"></script>
+  <script src="./data/menuData.js"></script>
+  <script src="./data/galleryData.js"></script>
+  <script src="./data/reviewsData.js"></script>
 
-  <!-- 1. Owner-Editable Data Files (/data) -->
-  <script src="data/restaurantConfig.js"></script>
-  <script src="data/menuData.js"></script>
-  <script src="data/galleryData.js"></script>
-  <script src="data/reviewsData.js"></script>
-
-  <!-- 2. Modular UI Components (/components) -->
-  <script src="components/BrandElements.js"></script>
-  <script src="components/Layout.js"></script>
-  <script src="components/HeroAndAbout.js"></script>
-  <script src="components/MenuAndSignatures.js"></script>
-  <script src="components/GalleryAndReviews.js"></script>
-  <script src="components/ContactAndModals.js"></script>
-  <script src="components/OwnerAdminDrawer.js"></script>
-  <script src="components/App.js"></script>
+  <!-- 2. Modular UI Components (./components) -->
+  <script src="./components/BrandElements.js"></script>
+  <script src="./components/Layout.js"></script>
+  <script src="./components/HeroAndAbout.js"></script>
+  <script src="./components/MenuAndSignatures.js"></script>
+  <script src="./components/GalleryAndReviews.js"></script>
+  <script src="./components/ContactAndModals.js"></script>
+  <script src="./components/OwnerAdminDrawer.js"></script>
+  <script src="./components/App.js"></script>
 </body>
 </html>
