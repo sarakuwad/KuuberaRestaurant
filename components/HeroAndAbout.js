@@ -7,7 +7,7 @@
 
 (function () {
   const h = React.createElement;
-  const { GoldOrnamentDivider, FeatureGoldIcon, KuuberaPhotoSlot } = window.KuuberaBrand;
+  const { KuuberaLogo, GoldOrnamentDivider, FeatureGoldIcon, KuuberaPhotoSlot } = window.KuuberaBrand;
 
   const ABOUT_FEATURES = [
     {
@@ -116,21 +116,17 @@
       h(
         "div",
         { className: "relative z-20 max-w-4xl mx-auto text-center px-4 sm:px-8 py-10 animate-heroEntrance" },
-        // Official Kuubera Pure Veg Logo Crest Showcase
+        // Official Kuubera Pure Veg Logo Crest Showcase (Royal Blue & Gold Reference Lockup)
         h(
           "div",
-          { className: "mb-5 flex justify-center" },
+          { className: "mb-6 flex justify-center" },
           h(
             "div",
             {
               className:
-                "inline-flex items-center justify-center px-6 py-3 rounded-sm bg-white/95 border-2 border-[#D4AF37] shadow-[0_10px_35px_rgba(0,0,0,0.5)]"
+                "inline-flex items-center justify-center px-6 py-3.5 rounded-sm bg-[#10265C]/95 border border-[#D4AF37]/80 shadow-[0_10px_35px_rgba(0,0,0,0.65)]"
             },
-            h("img", {
-              src: "./assets/images/kuubera-logo-cropped.png",
-              alt: "KUUBERA PURE VEG Official Logo",
-              className: "h-16 sm:h-20 w-auto object-contain"
-            })
+            h(KuuberaLogo, { size: "lg" })
           )
         ),
 
@@ -154,7 +150,7 @@
           "h1",
           {
             className:
-              "font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-[0.08em] leading-[1.12] gold-metallic-text drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
+              "font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-[0.14em] leading-[1.15] gold-metallic-text drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
           },
           "AN EXPERIENCE BEYOND ORDINARY"
         ),
@@ -166,7 +162,7 @@
           "p",
           {
             className:
-              "font-serif italic text-xl sm:text-2xl md:text-3xl text-[#E8D7A5] font-medium tracking-wide mb-5"
+              "font-sans text-lg sm:text-2xl md:text-3xl text-[#E8D7A5] font-semibold uppercase tracking-[0.12em] mb-5"
           },
           "Where Every Meal Becomes a Royal Experience."
         ),

@@ -7,30 +7,30 @@
 (function () {
   const h = React.createElement;
 
-  // Official KUUBERA Logo Component (Uses the actual uploaded Kuubera Pure Veg logo & K-leaf emblem)
+  // Official KUUBERA Logo Component (Uses the actual uploaded Kuubera Pure Veg logo, K-leaf emblem & exact wordmark font)
   function KuuberaLogo({ size = "md", variant = "horizontal", onClick, showSubtitle = true }) {
     const sizeClasses = {
       sm: {
-        title: "text-xl md:text-2xl tracking-[0.22em]",
-        sub: "text-[9px] tracking-[0.32em]",
+        wordmarkImg: "h-5 md:h-6",
+        subImg: "h-2.5 md:h-3",
         emblem: "w-9 h-9",
         stackedImg: "h-14"
       },
       md: {
-        title: "text-2xl md:text-3xl tracking-[0.24em]",
-        sub: "text-[10px] tracking-[0.34em]",
+        wordmarkImg: "h-6 md:h-7",
+        subImg: "h-3 md:h-3.5",
         emblem: "w-11 h-11",
         stackedImg: "h-20"
       },
       lg: {
-        title: "text-3xl md:text-5xl tracking-[0.26em]",
-        sub: "text-xs tracking-[0.38em]",
+        wordmarkImg: "h-8 md:h-11",
+        subImg: "h-4 md:h-5",
         emblem: "w-14 h-14",
         stackedImg: "h-28"
       }
     }[size] || {
-      title: "text-2xl tracking-[0.24em]",
-      sub: "text-[10px] tracking-[0.34em]",
+      wordmarkImg: "h-6 md:h-7",
+      subImg: "h-3 md:h-3.5",
       emblem: "w-11 h-11",
       stackedImg: "h-20"
     };
@@ -64,7 +64,7 @@
       h(
         "div",
         {
-          className: `${sizeClasses.emblem} relative flex items-center justify-center rounded-sm bg-white/95 border border-[#D4AF37] p-1 shadow-[0_0_18px_rgba(212,175,55,0.28)] transition-transform duration-500 group-hover:scale-105`
+          className: `${sizeClasses.emblem} relative flex items-center justify-center rounded-sm bg-white/95 border border-[#D4AF37] p-1 shadow-[0_0_18px_rgba(212,175,55,0.28)] transition-transform duration-500 group-hover:scale-105 shrink-0`
         },
         h("img", {
           src: "./assets/images/kuubera-icon-transparent.png",
@@ -72,30 +72,26 @@
           className: "w-full h-full object-contain"
         })
       ),
-      // Wordmark Typography matching Official Logo
+      // Exact Wordmark Typography from Official Logo Image
       h(
         "div",
-        { className: "flex flex-col" },
-        h(
-          "span",
-          {
-            className: `font-sans font-extrabold uppercase leading-none gold-metallic-text ${sizeClasses.title}`
-          },
-          "KUUBERA"
-        ),
+        { className: "flex flex-col justify-center" },
+        h("img", {
+          src: "./assets/images/kuubera-wordmark-transparent.png",
+          alt: "KUUBERA",
+          className: `${sizeClasses.wordmarkImg} w-auto object-contain object-left drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]`
+        }),
         showSubtitle &&
           h(
             "div",
-            { className: "flex items-center gap-1.5 mt-1" },
-            h("span", { className: "h-[1px] w-3 bg-[#D4AF37]/70" }),
-            h(
-              "span",
-              {
-                className: `font-sans font-bold uppercase text-[#32B44A] ${sizeClasses.sub}`
-              },
-              "PURE VEG"
-            ),
-            h("span", { className: "h-[1px] w-3 bg-[#D4AF37]/70" })
+            { className: "flex items-center gap-2 mt-1.5" },
+            h("span", { className: "h-[1px] w-3.5 bg-[#D4AF37]/80" }),
+            h("img", {
+              src: "./assets/images/kuubera-pureveg-transparent.png",
+              alt: "PURE VEG",
+              className: `${sizeClasses.subImg} w-auto object-contain`
+            }),
+            h("span", { className: "h-[1px] w-3.5 bg-[#D4AF37]/80" })
           )
       )
     );

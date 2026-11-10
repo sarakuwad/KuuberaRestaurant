@@ -28,11 +28,11 @@
   <link rel="icon" type="image/png" href="./favicon.png" />
   <link rel="apple-touch-icon" href="./assets/images/kuubera-logo.png" />
 
-  <!-- Google Fonts: Cormorant Garamond, Playfair Display & Montserrat -->
+  <!-- Google Fonts: Rubik & Montserrat (matching Official KUUBERA Logo Typography) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
   />
 
@@ -113,9 +113,9 @@
               ivory: "#FFF9EF"
             },
             fontFamily: {
-              serif: ["'Playfair Display'", "'Cormorant Garamond'", "Georgia", "serif"],
-              display: ["'Cormorant Garamond'", "'Playfair Display'", "Georgia", "serif"],
-              sans: ["'Montserrat'", "system-ui", "-apple-system", "sans-serif"]
+              serif: ["'Rubik'", "'Montserrat'", "system-ui", "-apple-system", "sans-serif"],
+              display: ["'Rubik'", "'Montserrat'", "system-ui", "-apple-system", "sans-serif"],
+              sans: ["'Montserrat'", "'Rubik'", "system-ui", "-apple-system", "sans-serif"]
             }
           }
         }
@@ -145,11 +145,18 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat', 'Rubik', sans-serif;
       background-color: #091735;
       color: #FFF9EF;
       margin: 0;
       overflow-x: hidden;
+    }
+
+    .font-serif,
+    .font-display,
+    h1, h2, h3, .logo-font {
+      font-family: 'Rubik', 'Montserrat', sans-serif;
+      letter-spacing: 0.12em;
     }
 
     /* Sophisticated Metallic Gold Text Effect (Not bright yellow) */
@@ -281,10 +288,10 @@
   <!-- Root Application Container with Instant Fallback Shell -->
   <div id="root">
     <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#091735;color:#FFF9EF;text-align:center;padding:24px;border:1px solid rgba(212,175,55,0.4);">
-      <p style="font-family:'Playfair Display',Georgia,serif;font-size:32px;letter-spacing:0.28em;color:#D4AF37;margin:0;font-weight:700;">KUUBERA</p>
-      <p style="font-size:11px;letter-spacing:0.35em;color:#E8D7A5;margin-top:6px;text-transform:uppercase;">PURE VEG • VARVE BUDRUK, PUNE</p>
-      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:28px;color:#FFF9EF;margin-top:24px;letter-spacing:0.08em;">AN EXPERIENCE BEYOND ORDINARY</h1>
-      <p style="font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:18px;color:#E8D7A5;margin-top:8px;">Where Every Meal Becomes a Royal Experience.</p>
+      <p style="font-family:'Rubik','Montserrat',sans-serif;font-size:32px;letter-spacing:0.24em;color:#D4AF37;margin:0;font-weight:800;">KUUBERA</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:0.35em;color:#32B44A;margin-top:6px;text-transform:uppercase;font-weight:700;">— PURE VEG —</p>
+      <h1 style="font-family:'Rubik','Montserrat',sans-serif;font-size:28px;color:#FFF9EF;margin-top:24px;letter-spacing:0.14em;font-weight:800;">AN EXPERIENCE BEYOND ORDINARY</h1>
+      <p style="font-family:'Montserrat',sans-serif;font-size:16px;color:#E8D7A5;margin-top:8px;letter-spacing:0.08em;">Where Every Meal Becomes a Royal Experience.</p>
     </div>
   </div>
 
