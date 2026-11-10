@@ -7,13 +7,50 @@
 (function () {
   const h = React.createElement;
 
-  // Custom KUUBERA Gold Wordmark Logo
-  function KuuberaLogo({ size = "md", onClick, showSubtitle = true }) {
+  // Official KUUBERA Logo Component (Uses the actual uploaded Kuubera Pure Veg logo & K-leaf emblem)
+  function KuuberaLogo({ size = "md", variant = "horizontal", onClick, showSubtitle = true }) {
     const sizeClasses = {
-      sm: { title: "text-xl md:text-2xl tracking-[0.26em]", sub: "text-[9px] tracking-[0.35em]", emblem: "w-7 h-7" },
-      md: { title: "text-2xl md:text-3xl tracking-[0.28em]", sub: "text-[10px] tracking-[0.38em]", emblem: "w-9 h-9" },
-      lg: { title: "text-3xl md:text-5xl tracking-[0.3em]", sub: "text-xs tracking-[0.42em]", emblem: "w-12 h-12" }
-    }[size] || { title: "text-2xl tracking-[0.28em]", sub: "text-[10px] tracking-[0.38em]", emblem: "w-9 h-9" };
+      sm: {
+        title: "text-xl md:text-2xl tracking-[0.22em]",
+        sub: "text-[9px] tracking-[0.32em]",
+        emblem: "w-9 h-9",
+        stackedImg: "h-14"
+      },
+      md: {
+        title: "text-2xl md:text-3xl tracking-[0.24em]",
+        sub: "text-[10px] tracking-[0.34em]",
+        emblem: "w-11 h-11",
+        stackedImg: "h-20"
+      },
+      lg: {
+        title: "text-3xl md:text-5xl tracking-[0.26em]",
+        sub: "text-xs tracking-[0.38em]",
+        emblem: "w-14 h-14",
+        stackedImg: "h-28"
+      }
+    }[size] || {
+      title: "text-2xl tracking-[0.24em]",
+      sub: "text-[10px] tracking-[0.34em]",
+      emblem: "w-11 h-11",
+      stackedImg: "h-20"
+    };
+
+    if (variant === "stacked") {
+      return h(
+        "button",
+        {
+          type: "button",
+          onClick: onClick,
+          className: "group inline-flex flex-col items-center focus:outline-none",
+          "aria-label": "KUUBERA PURE VEG — Return to Home"
+        },
+        h("img", {
+          src: "./assets/images/kuubera-logo-cropped.png",
+          alt: "KUUBERA PURE VEG Official Logo",
+          className: `${sizeClasses.stackedImg} w-auto object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)] transition-transform duration-500 group-hover:scale-105`
+        })
+      );
+    }
 
     return h(
       "button",
@@ -23,73 +60,26 @@
         className: "group inline-flex items-center gap-3 text-left focus:outline-none",
         "aria-label": "KUUBERA PURE VEG — Return to Home"
       },
-      // Royal Palace Lotus Crest SVG
+      // Official K-Leaf Emblem
       h(
         "div",
         {
-          className: `${sizeClasses.emblem} relative flex items-center justify-center rounded-sm border border-[#D4AF37]/60 bg-[#091735]/90 p-1 shadow-[0_0_15px_rgba(212,175,55,0.18)] transition-transform duration-500 group-hover:scale-105 group-hover:border-[#D4AF37]`
+          className: `${sizeClasses.emblem} relative flex items-center justify-center rounded-sm bg-white/95 border border-[#D4AF37] p-1 shadow-[0_0_18px_rgba(212,175,55,0.28)] transition-transform duration-500 group-hover:scale-105`
         },
-        h(
-          "svg",
-          {
-            viewBox: "0 0 64 64",
-            fill: "none",
-            className: "w-full h-full",
-            xmlns: "http://www.w3.org/2000/svg"
-          },
-          // Outer octagonal royal frame
-          h("polygon", {
-            points: "32,3 53,11 61,32 53,53 32,61 11,53 3,32 11,11",
-            stroke: "#D4AF37",
-            strokeWidth: "1.6",
-            fill: "rgba(16,38,92,0.7)"
-          }),
-          // Inner diamond
-          h("polygon", {
-            points: "32,9 55,32 32,55 9,32",
-            stroke: "#E8D7A5",
-            strokeWidth: "0.9",
-            strokeDasharray: "2 2",
-            fill: "none"
-          }),
-          // Royal Lotus Petals / Crown Motif
-          h("path", {
-            d: "M32 16C28 23 23 27 23 33C23 38 27 42 32 42C37 42 41 38 41 33C41 27 36 23 32 16Z",
-            stroke: "#D4AF37",
-            strokeWidth: "1.8",
-            fill: "rgba(212,175,55,0.18)"
-          }),
-          h("path", {
-            d: "M23 34C18 32 15 27 16 22C21 24 24 28 25 33",
-            stroke: "#D4AF37",
-            strokeWidth: "1.5",
-            strokeLinecap: "round"
-          }),
-          h("path", {
-            d: "M41 34C46 32 49 27 48 22C43 24 40 28 39 33",
-            stroke: "#D4AF37",
-            strokeWidth: "1.5",
-            strokeLinecap: "round"
-          }),
-          // Base pedestal
-          h("path", {
-            d: "M20 46H44M24 50H40",
-            stroke: "#E8D7A5",
-            strokeWidth: "1.5",
-            strokeLinecap: "round"
-          }),
-          // Center jewel
-          h("circle", { cx: "32", cy: "31", r: "2.5", fill: "#D4AF37" })
-        )
+        h("img", {
+          src: "./assets/images/kuubera-icon-transparent.png",
+          alt: "Kuubera Emblem",
+          className: "w-full h-full object-contain"
+        })
       ),
-      // Wordmark Typography
+      // Wordmark Typography matching Official Logo
       h(
         "div",
         { className: "flex flex-col" },
         h(
           "span",
           {
-            className: `font-serif font-bold uppercase leading-none gold-metallic-text ${sizeClasses.title}`
+            className: `font-sans font-extrabold uppercase leading-none gold-metallic-text ${sizeClasses.title}`
           },
           "KUUBERA"
         ),
@@ -101,7 +91,7 @@
             h(
               "span",
               {
-                className: `font-sans font-medium uppercase text-[#E8D7A5] ${sizeClasses.sub}`
+                className: `font-sans font-bold uppercase text-[#32B44A] ${sizeClasses.sub}`
               },
               "PURE VEG"
             ),

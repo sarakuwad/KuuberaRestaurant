@@ -121,6 +121,24 @@
       h(
         "div",
         { className: "relative z-20 max-w-4xl mx-auto text-center px-4 sm:px-8 py-12 animate-heroEntrance" },
+        // Official Kuubera Pure Veg Logo Crest Showcase
+        h(
+          "div",
+          { className: "mb-5 flex justify-center" },
+          h(
+            "div",
+            {
+              className:
+                "inline-flex items-center justify-center px-6 py-3 rounded-sm bg-white/95 border-2 border-[#D4AF37] shadow-[0_10px_35px_rgba(0,0,0,0.5)]"
+            },
+            h("img", {
+              src: "./assets/images/kuubera-logo-cropped.png",
+              alt: "KUUBERA PURE VEG Official Logo",
+              className: "h-16 sm:h-20 w-auto object-contain"
+            })
+          )
+        ),
+
         // Top Royal Badge
         h(
           "div",

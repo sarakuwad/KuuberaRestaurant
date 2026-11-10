@@ -24,7 +24,7 @@ function copyRecursive(src, dest) {
 
 fs.mkdirSync(distDir, { recursive: true });
 
-const itemsToCopy = ["index.html", "README.md", "data", "components", "assets"];
+const itemsToCopy = ["index.html", "favicon.png", "README.md", "data", "components", "assets"];
 for (const item of itemsToCopy) {
   const srcPath = path.join(rootDir, item);
   if (fs.existsSync(srcPath)) {

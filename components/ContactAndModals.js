@@ -976,6 +976,11 @@
           h(
             "div",
             { className: "text-center border-b-2 border-[#D4AF37] pb-6" },
+            h("img", {
+              src: "./assets/images/kuubera-logo-cropped.png",
+              alt: "KUUBERA PURE VEG",
+              className: "h-16 w-auto mx-auto mb-3 object-contain"
+            }),
             h("h2", { className: "font-serif text-3xl font-bold text-[#10265C] tracking-widest uppercase" }, config.fullName),
             h("p", { className: "text-sm text-[#8B1726] font-semibold uppercase tracking-widest mt-1" }, "100% Pure Vegetarian • Jain Options Available"),
             h("p", { className: "text-xs text-[#091735]/80 mt-2" }, `${config.contact.addressLines.join(" ")} | Phone: ${config.contact.phoneDisplay} | ${config.contact.openingHours}`)
