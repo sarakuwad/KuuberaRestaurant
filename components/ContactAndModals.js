@@ -989,7 +989,7 @@
             "div",
             { className: "text-center border-b-2 border-[#D4AF37] pb-6" },
             h("img", {
-              src: "./assets/images/kuubera-logo-cropped.png",
+              src: "./assets/images/kuubera-logo-transparent.png",
               alt: "KUUBERA PURE VEG",
               className: "h-16 w-auto mx-auto mb-3 object-contain"
             }),

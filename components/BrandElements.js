@@ -45,7 +45,7 @@
           "aria-label": "KUUBERA PURE VEG — Return to Home"
         },
         h("img", {
-          src: "./assets/images/kuubera-logo-cropped.png",
+          src: "./assets/images/kuubera-logo-transparent.png",
           alt: "KUUBERA PURE VEG Official Logo",
           className: `${sizeClasses.stackedImg} w-auto object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)] transition-transform duration-500 group-hover:scale-105`
         })
@@ -60,16 +60,16 @@
         className: "group inline-flex items-center gap-3 text-left focus:outline-none",
         "aria-label": "KUUBERA PURE VEG — Return to Home"
       },
-      // Official K-Leaf Emblem
+      // Official K-Leaf Emblem (Transparent — No White Box)
       h(
         "div",
         {
-          className: `${sizeClasses.emblem} relative flex items-center justify-center rounded-sm bg-white/95 border border-[#D4AF37] p-1 shadow-[0_0_18px_rgba(212,175,55,0.28)] transition-transform duration-500 group-hover:scale-105 shrink-0`
+          className: `${sizeClasses.emblem} relative flex items-center justify-center transition-transform duration-500 group-hover:scale-105 shrink-0`
         },
         h("img", {
           src: "./assets/images/kuubera-icon-transparent.png",
           alt: "Kuubera Emblem",
-          className: "w-full h-full object-contain"
+          className: "w-full h-full object-contain drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
         })
       ),
       // Exact Wordmark Typography from Official Logo Image
