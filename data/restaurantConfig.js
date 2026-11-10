@@ -18,7 +18,7 @@ window.KUUBERA_CONFIG = {
   // Optional top announcement bar (set enabled: false to hide)
   announcement: {
     enabled: true,
-    text: "Welcoming Families & Highway Travellers Daily from 7:00 AM – 11:00 PM at Gat No. 91, Varve Budruk (Near Khed Shivapur) • Special Jain Menu Available",
+    text: "Welcoming Families Daily at Gat No. 91, Varve Budruk (Near Khed Shivapur) • South Indian: 7 AM–10:30 PM | Pav Bhaji: 10 AM–11:30 PM | Main Course: 11 AM–11:30 PM • We Accept Party Orders",
     badge: "PURE VEG & JAIN"
   },
 

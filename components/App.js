@@ -109,7 +109,7 @@
     // Load initial data from editable `/data/*.js` files (with optional localStorage overrides from Admin Studio)
     const [config, setConfig] = React.useState(() => {
       try {
-        const saved = localStorage.getItem("kuubera_config_v1");
+        const saved = localStorage.getItem("kuubera_config_v2");
         return saved ? JSON.parse(saved) : window.KUUBERA_CONFIG;
       } catch (e) {
         return window.KUUBERA_CONFIG;
@@ -118,7 +118,7 @@
 
     const [menuItems, setMenuItems] = React.useState(() => {
       try {
-        const saved = localStorage.getItem("kuubera_menu_v1");
+        const saved = localStorage.getItem("kuubera_menu_v2");
         return saved ? JSON.parse(saved) : window.KUUBERA_MENU_ITEMS;
       } catch (e) {
         return window.KUUBERA_MENU_ITEMS;
@@ -127,7 +127,7 @@
 
     const [signatureDishes, setSignatureDishes] = React.useState(() => {
       try {
-        const saved = localStorage.getItem("kuubera_signatures_v1");
+        const saved = localStorage.getItem("kuubera_signatures_v2");
         return saved ? JSON.parse(saved) : window.KUUBERA_SIGNATURE_DISHES;
       } catch (e) {
         return window.KUUBERA_SIGNATURE_DISHES;
@@ -136,7 +136,7 @@
 
     const [galleryItems, setGalleryItems] = React.useState(() => {
       try {
-        const saved = localStorage.getItem("kuubera_gallery_v1");
+        const saved = localStorage.getItem("kuubera_gallery_v2");
         return saved ? JSON.parse(saved) : window.KUUBERA_GALLERY_ITEMS;
       } catch (e) {
         return window.KUUBERA_GALLERY_ITEMS;
@@ -150,34 +150,34 @@
     // Persist owner edits automatically
     React.useEffect(() => {
       try {
-        localStorage.setItem("kuubera_config_v1", JSON.stringify(config));
+        localStorage.setItem("kuubera_config_v2", JSON.stringify(config));
       } catch (e) {}
     }, [config]);
 
     React.useEffect(() => {
       try {
-        localStorage.setItem("kuubera_menu_v1", JSON.stringify(menuItems));
+        localStorage.setItem("kuubera_menu_v2", JSON.stringify(menuItems));
       } catch (e) {}
     }, [menuItems]);
 
     React.useEffect(() => {
       try {
-        localStorage.setItem("kuubera_signatures_v1", JSON.stringify(signatureDishes));
+        localStorage.setItem("kuubera_signatures_v2", JSON.stringify(signatureDishes));
       } catch (e) {}
     }, [signatureDishes]);
 
     React.useEffect(() => {
       try {
-        localStorage.setItem("kuubera_gallery_v1", JSON.stringify(galleryItems));
+        localStorage.setItem("kuubera_gallery_v2", JSON.stringify(galleryItems));
       } catch (e) {}
     }, [galleryItems]);
 
     const handleResetToDefaults = () => {
       try {
-        localStorage.removeItem("kuubera_config_v1");
-        localStorage.removeItem("kuubera_menu_v1");
-        localStorage.removeItem("kuubera_signatures_v1");
-        localStorage.removeItem("kuubera_gallery_v1");
+        localStorage.removeItem("kuubera_config_v2");
+        localStorage.removeItem("kuubera_menu_v2");
+        localStorage.removeItem("kuubera_signatures_v2");
+        localStorage.removeItem("kuubera_gallery_v2");
       } catch (e) {}
       setConfig(window.KUUBERA_CONFIG);
       setMenuItems(window.KUUBERA_MENU_ITEMS);

@@ -363,7 +363,7 @@
           h(
             "p",
             { className: "text-sm sm:text-base text-[#091735]/80 leading-relaxed" },
-            "Explore Kuubera's curated selection across 14 culinary categories. Average dining cost is ₹350–₹400 for two. Special Jain preparations (without onion & garlic) are available across our menu."
+            "Explore Kuubera's complete official menu across 14 categories with verified INR prices. South Indian (7:00 AM – 10:30 PM) • Pav Bhaji (10:00 AM – 11:30 PM) • Punjabi, Chinese & Soups (11:00 AM – 11:30 PM). We Accept Party Orders."
           )
         ),
 
