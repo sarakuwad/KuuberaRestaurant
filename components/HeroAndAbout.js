@@ -1,6 +1,7 @@
 /**
  * ============================================================================
- * KUUBERA PURE VEG — HERO SECTION, ABOUT KUUBERA & SPECIAL EXPERIENCE SECTION
+ * KUUBERA PURE VEG — HERO SECTION (WITH VIDEO CAROUSEL), 24-REEL SHOWCASE,
+ * ABOUT KUUBERA & SPECIAL EXPERIENCE SECTION
  * ============================================================================
  */
 
@@ -41,10 +42,34 @@
     }
   ];
 
-  // 3. HOMEPAGE — CINEMATIC HERO SECTION
-  function HeroSection({ config, onExploreMenu, onFindUs, onOpenReservation }) {
-    const heroImg = config.brandImages && config.brandImages.heroBackground;
-    const hasHeroPhoto = Boolean(heroImg && heroImg.imageUrl && heroImg.imageUrl.trim() !== "");
+  // 3. HOMEPAGE — CINEMATIC HERO SECTION WITH LIVE BACKGROUND VIDEO CAROUSEL
+  function HeroSection({ config, videos = [], onExploreMenu, onFindUs, onOpenReservation }) {
+    const [currentVidIdx, setCurrentVidIdx] = React.useState(0);
+    const [isMuted, setIsMuted] = React.useState(true);
+    const videoRef = React.useRef(null);
+
+    const hasVideos = Array.isArray(videos) && videos.length > 0;
+    const activeVideo = hasVideos ? videos[currentVidIdx % videos.length] : null;
+
+    const handleNextVideo = () => {
+      if (!hasVideos) return;
+      setCurrentVidIdx((prev) => (prev + 1) % videos.length);
+    };
+
+    const handlePrevVideo = () => {
+      if (!hasVideos) return;
+      setCurrentVidIdx((prev) => (prev - 1 + videos.length) % videos.length);
+    };
+
+    React.useEffect(() => {
+      if (videoRef.current && activeVideo) {
+        videoRef.current.load();
+        const playPromise = videoRef.current.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {});
+        }
+      }
+    }, [currentVidIdx, activeVideo]);
 
     return h(
       "section",
@@ -52,54 +77,25 @@
         className:
           "relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#091735] text-[#FFF9EF] py-20 px-4 sm:px-6 lg:px-8"
       },
-      // Background Image or Royal Architectural Canvas
-      hasHeroPhoto
-        ? h("img", {
-            src: heroImg.imageUrl,
-            alt: "Kuubera Pure Veg Interior & Dining",
-            className: "absolute inset-0 w-full h-full object-cover scale-105 animate-subtleZoom"
+      // Background Video Carousel Player
+      activeVideo
+        ? h("video", {
+            ref: videoRef,
+            key: activeVideo.file,
+            src: activeVideo.file,
+            autoPlay: true,
+            muted: isMuted,
+            playsInline: true,
+            onEnded: handleNextVideo,
+            onError: handleNextVideo,
+            className: "absolute inset-0 w-full h-full object-cover opacity-55 transition-opacity duration-700"
           })
-        : h(
-            "div",
-            {
-              className: "absolute inset-0 w-full h-full pointer-events-none",
-              "aria-hidden": "true"
-            },
-            // Deep royal ambient radial lighting & Indian Palace Archway SVG pattern
-            h("div", {
-              className:
-                "absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.16)_0%,_rgba(16,38,92,0.92)_52%,_rgba(9,23,53,1)_100%)]"
-            }),
-            h(
-              "svg",
-              {
-                viewBox: "0 0 1440 900",
-                fill: "none",
-                className: "w-full h-full object-cover opacity-25",
-                preserveAspectRatio: "xMidYMid slice"
-              },
-              // Grand Jharokha Palace Arch Outline
-              h("path", {
-                d: "M180 900 V320 C180 180 450 110 720 40 C990 110 1260 180 1260 320 V900",
-                stroke: "#D4AF37",
-                strokeWidth: "1.5"
-              }),
-              h("path", {
-                d: "M220 900 V340 C220 210 470 145 720 75 C970 145 1220 210 1220 340 V900",
-                stroke: "#E8D7A5",
-                strokeWidth: "0.8",
-                strokeDasharray: "6 6"
-              }),
-              // Subtle Mandala Rings
-              h("circle", { cx: "720", cy: "430", r: "280", stroke: "#D4AF37", strokeWidth: "0.8", strokeDasharray: "4 6" }),
-              h("circle", { cx: "720", cy: "430", r: "360", stroke: "#D4AF37", strokeWidth: "0.5" })
-            )
-          ),
+        : null,
 
       // Dark Royal-Blue Overlay for High Contrast Readability
       h("div", {
         className:
-          "absolute inset-0 bg-gradient-to-b from-[#091735]/85 via-[#10265C]/80 to-[#091735]/95 pointer-events-none"
+          "absolute inset-0 bg-gradient-to-b from-[#091735]/85 via-[#10265C]/75 to-[#091735]/95 pointer-events-none"
       }),
 
       // Subtle Gold Decorative Outer Frame Border
@@ -107,10 +103,9 @@
         "div",
         {
           className:
-            "absolute inset-4 sm:inset-7 md:inset-10 border border-[#D4AF37]/40 pointer-events-none z-10",
+            "absolute inset-4 sm:inset-7 md:inset-10 border border-[#D4AF37]/45 pointer-events-none z-10",
           "aria-hidden": "true"
         },
-        // 4 Ornamental Gold Corner Accents
         h("div", { className: "absolute -top-1 -left-1 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]" }),
         h("div", { className: "absolute -top-1 -right-1 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]" }),
         h("div", { className: "absolute -bottom-1 -left-1 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]" }),
@@ -120,7 +115,7 @@
       // Hero Content Container
       h(
         "div",
-        { className: "relative z-20 max-w-4xl mx-auto text-center px-4 sm:px-8 py-12 animate-heroEntrance" },
+        { className: "relative z-20 max-w-4xl mx-auto text-center px-4 sm:px-8 py-10 animate-heroEntrance" },
         // Official Kuubera Pure Veg Logo Crest Showcase
         h(
           "div",
@@ -212,12 +207,57 @@
           )
         ),
 
+        // Hero Background Video Carousel Controls Bar
+        hasVideos &&
+          h(
+            "div",
+            {
+              className:
+                "mt-10 inline-flex items-center gap-3 px-4 py-2 rounded-sm bg-[#091735]/85 border border-[#D4AF37]/50 backdrop-blur-md text-xs text-[#E8D7A5]"
+            },
+            h(
+              "button",
+              {
+                type: "button",
+                onClick: handlePrevVideo,
+                "aria-label": "Previous Hero Video",
+                className: "px-2 py-1 text-[#D4AF37] hover:text-[#FFF9EF] font-bold"
+              },
+              "← Prev"
+            ),
+            h(
+              "span",
+              { className: "font-mono text-[11px] text-[#FFF9EF]" },
+              `Video ${(currentVidIdx % videos.length) + 1} / ${videos.length}`
+            ),
+            h(
+              "button",
+              {
+                type: "button",
+                onClick: handleNextVideo,
+                "aria-label": "Next Hero Video",
+                className: "px-2 py-1 text-[#D4AF37] hover:text-[#FFF9EF] font-bold"
+              },
+              "Next →"
+            ),
+            h("span", { className: "text-[#D4AF37]/40" }, "|"),
+            h(
+              "button",
+              {
+                type: "button",
+                onClick: () => setIsMuted(!isMuted),
+                className: "px-2 py-1 text-[#D4AF37] hover:text-[#FFF9EF] font-semibold uppercase tracking-wider text-[10px]"
+              },
+              isMuted ? "Unmute 🔇" : "Sound On 🔊"
+            )
+          ),
+
         // Quick Verified Trust Badges Strip
         h(
           "div",
           {
             className:
-              "mt-12 pt-8 border-t border-[#D4AF37]/25 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center max-w-3xl mx-auto"
+              "mt-10 pt-8 border-t border-[#D4AF37]/25 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center max-w-3xl mx-auto"
           },
           h(
             "div",
@@ -250,15 +290,15 @@
       h(
         "a",
         {
-          href: "#about-section",
+          href: "#video-carousel-section",
           onClick: (e) => {
             e.preventDefault();
-            const el = document.getElementById("about-section");
+            const el = document.getElementById("video-carousel-section");
             if (el) el.scrollIntoView({ behavior: "smooth" });
           },
-          "aria-label": "Scroll down to discover Kuubera",
+          "aria-label": "Scroll down to watch Kuubera videos",
           className:
-            "absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-[#E8D7A5]/80 hover:text-[#D4AF37] transition-colors cursor-pointer"
+            "absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-[#E8D7A5]/80 hover:text-[#D4AF37] transition-colors cursor-pointer"
         },
         h("span", { className: "text-[10px] uppercase tracking-[0.3em]" }, "Scroll"),
         h(
@@ -268,6 +308,265 @@
               "w-5 h-8 rounded-full border border-[#D4AF37]/60 flex items-start justify-center p-1"
           },
           h("span", { className: "w-1 h-2 rounded-full bg-[#D4AF37] animate-scrollDot" })
+        )
+      )
+    );
+  }
+
+  // OPENING PAGE INTERACTIVE 24-VIDEO CAROUSEL ("EXPERIENCE KUUBERA IN MOTION")
+  function VideoReelsCarouselSection({ videos = [], config }) {
+    const [activeIdx, setActiveIdx] = React.useState(0);
+    const [isMuted, setIsMuted] = React.useState(true);
+    const trackRef = React.useRef(null);
+    const cardRefs = React.useRef([]);
+
+    if (!videos || videos.length === 0) return null;
+
+    const selectVideo = (idx) => {
+      const normalized = (idx + videos.length) % videos.length;
+      setActiveIdx(normalized);
+      const targetEl = cardRefs.current[normalized];
+      if (targetEl && trackRef.current) {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+    };
+
+    const scrollTrack = (dir) => {
+      if (!trackRef.current) return;
+      trackRef.current.scrollBy({ left: dir * 320, behavior: "smooth" });
+    };
+
+    return h(
+      "section",
+      {
+        id: "video-carousel-section",
+        className:
+          "bg-[#091735] text-[#FFF9EF] py-16 md:py-24 border-y-2 border-[#D4AF37]/60 relative overflow-hidden"
+      },
+      h(
+        "div",
+        { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
+        // Header + Carousel Controls
+        h(
+          "div",
+          { className: "flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10" },
+          h(
+            "div",
+            null,
+            h(
+              "div",
+              {
+                className:
+                  "inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.26em] text-[#D4AF37] mb-2"
+              },
+              h("span", { className: "w-2 h-2 rounded-full bg-[#8B1726] border border-[#D4AF37]" }),
+              `LIVE FROM ${config.links.instagramHandle} • ${videos.length} OFFICIAL VIDEOS`
+            ),
+            h(
+              "h2",
+              {
+                className:
+                  "font-serif text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-wide gold-metallic-text"
+              },
+              "EXPERIENCE KUUBERA IN MOTION"
+            ),
+            h(
+              "p",
+              { className: "mt-2 text-sm sm:text-base text-[#E8D7A5]/85 max-w-2xl" },
+              "Swipe through our restaurant ambience, sizzling delicacies, fresh kitchen preparation, and family dining moments."
+            )
+          ),
+
+          // Sound Toggle & Prev/Next Carousel Controls
+          h(
+            "div",
+            { className: "flex items-center gap-3 self-start md:self-end flex-wrap" },
+            h(
+              "button",
+              {
+                type: "button",
+                onClick: () => setIsMuted(!isMuted),
+                className:
+                  "px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-sm bg-[#8B1726] text-[#FFF9EF] border border-[#D4AF37] hover:bg-[#a31c2d] transition-all"
+              },
+              isMuted ? "Unmute Audio 🔇" : "Audio On 🔊"
+            ),
+            h(
+              "button",
+              {
+                type: "button",
+                onClick: () => {
+                  selectVideo(activeIdx - 1);
+                  scrollTrack(-1);
+                },
+                "aria-label": "Previous Video",
+                className:
+                  "w-11 h-11 rounded-sm bg-[#10265C] border border-[#D4AF37] text-[#D4AF37] flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#091735] transition-all font-bold"
+              },
+              "←"
+            ),
+            h(
+              "span",
+              { className: "text-xs font-mono text-[#E8D7A5] px-1" },
+              `${activeIdx + 1} / ${videos.length}`
+            ),
+            h(
+              "button",
+              {
+                type: "button",
+                onClick: () => {
+                  selectVideo(activeIdx + 1);
+                  scrollTrack(1);
+                },
+                "aria-label": "Next Video",
+                className:
+                  "w-11 h-11 rounded-sm bg-[#10265C] border border-[#D4AF37] text-[#D4AF37] flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#091735] transition-all font-bold"
+              },
+              "→"
+            )
+          )
+        ),
+
+        // Horizontal 24-Video Reel Carousel Track
+        h(
+          "div",
+          {
+            ref: trackRef,
+            className:
+              "flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory hide-scrollbar scroll-smooth"
+          },
+          videos.map((vid, idx) => {
+            const isActive = idx === activeIdx;
+            return h(
+              "div",
+              {
+                key: vid.id,
+                ref: (el) => {
+                  cardRefs.current[idx] = el;
+                },
+                onClick: () => setActiveIdx(idx),
+                className: `snap-center shrink-0 w-[260px] sm:w-[290px] md:w-[310px] rounded-sm overflow-hidden bg-[#10265C] transition-all duration-300 cursor-pointer flex flex-col ${
+                  isActive
+                    ? "border-2 border-[#D4AF37] shadow-[0_0_30px_rgba(212,175,55,0.4)] scale-[1.01]"
+                    : "border border-[#D4AF37]/35 opacity-85 hover:opacity-100 hover:border-[#D4AF37]/80"
+                }`
+              },
+              // Video Viewport (9:16 Vertical Reel Aspect Ratio)
+              h(
+                "div",
+                { className: "relative w-full h-[420px] sm:h-[460px] bg-[#060f24] overflow-hidden" },
+                isActive
+                  ? h("video", {
+                      key: vid.file + "-active",
+                      src: vid.file,
+                      autoPlay: true,
+                      muted: isMuted,
+                      controls: true,
+                      playsInline: true,
+                      onEnded: () => selectVideo(idx + 1),
+                      className: "w-full h-full object-cover"
+                    })
+                  : h("video", {
+                      key: vid.file + "-preview",
+                      src: `${vid.file}#t=0.5`,
+                      preload: "metadata",
+                      muted: true,
+                      playsInline: true,
+                      className: "w-full h-full object-cover pointer-events-none"
+                    }),
+
+                // Top Tag Badge
+                h(
+                  "div",
+                  {
+                    className:
+                      "absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none"
+                  },
+                  h(
+                    "span",
+                    {
+                      className:
+                        "px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-[#091735]/90 text-[#D4AF37] border border-[#D4AF37]/50 rounded-sm"
+                    },
+                    vid.tag || `Reel #${idx + 1}`
+                  ),
+                  h(
+                    "span",
+                    {
+                      className:
+                        "px-2 py-0.5 text-[10px] font-mono bg-[#091735]/85 text-[#E8D7A5] rounded-sm"
+                    },
+                    `#${String(idx + 1).padStart(2, "0")}`
+                  )
+                ),
+
+                // Center Play Button Overlay on Inactive Cards
+                !isActive &&
+                  h(
+                    "div",
+                    {
+                      className:
+                        "absolute inset-0 bg-[#091735]/35 hover:bg-[#091735]/15 transition-colors flex items-center justify-center"
+                    },
+                    h(
+                      "div",
+                      {
+                        className:
+                          "w-14 h-14 rounded-full bg-[#8B1726]/95 border-2 border-[#D4AF37] text-[#FFF9EF] flex items-center justify-center shadow-xl text-lg pl-1"
+                      },
+                      "▶"
+                    )
+                  )
+              ),
+
+              // Card Footer Caption
+              h(
+                "div",
+                {
+                  className:
+                    "p-3.5 bg-[#10265C] border-t border-[#D4AF37]/30 flex items-center justify-between gap-2"
+                },
+                h(
+                  "p",
+                  { className: "font-serif text-sm font-bold text-[#FFF9EF] truncate" },
+                  vid.title
+                ),
+                h(
+                  "span",
+                  {
+                    className: `text-[10px] font-bold uppercase tracking-wider shrink-0 px-2 py-0.5 rounded-sm ${
+                      isActive
+                        ? "bg-[#D4AF37] text-[#091735]"
+                        : "bg-[#091735] text-[#D4AF37] border border-[#D4AF37]/40"
+                    }`
+                  },
+                  isActive ? "Playing" : "Watch"
+                )
+              )
+            );
+          })
+        ),
+
+        // Quick Reel Selector Pills (1 to 24)
+        h(
+          "div",
+          { className: "mt-4 flex items-center justify-center gap-1.5 flex-wrap" },
+          videos.map((v, idx) =>
+            h(
+              "button",
+              {
+                key: v.id,
+                type: "button",
+                onClick: () => selectVideo(idx),
+                className: `w-7 h-7 text-[10px] font-bold rounded-sm border transition-all ${
+                  idx === activeIdx
+                    ? "bg-[#D4AF37] text-[#091735] border-[#D4AF37] scale-110"
+                    : "bg-[#10265C] text-[#E8D7A5] border-[#D4AF37]/30 hover:border-[#D4AF37]"
+                }`
+              },
+              idx + 1
+            )
+          )
         )
       )
     );
@@ -283,33 +582,39 @@
         id: "about-section",
         className: "bg-[#FFF9EF] text-[#091735] py-20 md:py-28 relative overflow-hidden"
       },
-      // Subtle top & bottom gold hairline borders
-      h("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
-        // Editorial 2-Column Layout: Photo on Left, Text on Right
+      h(
+        "div",
+        { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
         h(
           "div",
           { className: "grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center" },
-          // Left Column: Framed Photograph Slot (5 cols)
+          // Left Column: Live Video or Framed Photograph Showcase (5 cols)
           h(
             "div",
             { className: "lg:col-span-5 relative group" },
-            // Decorative Offset Gold Frame
             h("div", {
               className:
                 "absolute -inset-3 border-2 border-[#D4AF37]/50 translate-x-3 translate-y-3 pointer-events-none hidden sm:block"
             }),
             h(
               "div",
-              { className: "relative shadow-2xl border border-[#D4AF37]" },
-              h(KuuberaPhotoSlot, {
-                imageUrl: aboutImg ? aboutImg.imageUrl : "",
-                title: aboutImg ? aboutImg.title : "Kuubera Pure Veg Dining Hall & Ambience",
-                subtitle:
-                  "Spacious, neat, and thoughtfully designed family dining room with scenic highway views at Varve Budruk, Pune.",
-                recommendedPath: aboutImg ? aboutImg.recommendedPath : "assets/images/kuubera-about-dining.webp",
-                categoryBadge: "ABOUT KUUBERA",
-                className: "w-full h-[380px] sm:h-[440px]"
-              }),
+              { className: "relative shadow-2xl border border-[#D4AF37] bg-[#091735]" },
+              aboutImg && aboutImg.imageUrl
+                ? h(KuuberaPhotoSlot, {
+                    imageUrl: aboutImg.imageUrl,
+                    title: aboutImg.title,
+                    recommendedPath: aboutImg.recommendedPath,
+                    categoryBadge: "ABOUT KUUBERA",
+                    className: "w-full h-[380px] sm:h-[440px]"
+                  })
+                : h("video", {
+                    src: "./assets/videos/21f800b8002646eabbe9aac305221ce7.mp4",
+                    autoPlay: true,
+                    loop: true,
+                    muted: true,
+                    playsInline: true,
+                    className: "w-full h-[380px] sm:h-[440px] object-cover"
+                  }),
               // Royal Corner Caption Plaque
               h(
                 "div",
@@ -437,7 +742,6 @@
           )
         ),
 
-        // Additional Editorial Highlights when viewing the Dedicated About Page
         isFullPage &&
           h(
             "div",
@@ -493,7 +797,6 @@
         className:
           "relative bg-[#8B1726] text-[#FFF9EF] py-20 md:py-24 overflow-hidden border-y-2 border-[#D4AF37]"
       },
-      // Subtle Royal Pattern Overlay
       h(
         "div",
         {
@@ -565,7 +868,7 @@
             )
           ),
 
-          // Right Column: Framed Restaurant Photograph Slot (5 cols)
+          // Right Column: Live Kuubera Video / Photo Showcase (5 cols)
           h(
             "div",
             { className: "lg:col-span-5" },
@@ -575,16 +878,22 @@
                 className:
                   "p-2.5 bg-[#091735]/80 border-2 border-[#D4AF37] shadow-[0_15px_40px_rgba(0,0,0,0.45)] rounded-sm group"
               },
-              h(KuuberaPhotoSlot, {
-                imageUrl: specialImg ? specialImg.imageUrl : "",
-                title: specialImg ? specialImg.title : "Memorable Family Gatherings at Kuubera",
-                subtitle: "Warm lighting, spacious family tables, and freshly prepared pure vegetarian delicacies.",
-                recommendedPath: specialImg
-                  ? specialImg.recommendedPath
-                  : "assets/images/kuubera-special-experience.webp",
-                categoryBadge: "TOGETHERNESS",
-                className: "w-full h-72 sm:h-80"
-              })
+              specialImg && specialImg.imageUrl
+                ? h(KuuberaPhotoSlot, {
+                    imageUrl: specialImg.imageUrl,
+                    title: specialImg.title,
+                    recommendedPath: specialImg.recommendedPath,
+                    categoryBadge: "TOGETHERNESS",
+                    className: "w-full h-72 sm:h-80"
+                  })
+                : h("video", {
+                    src: "./assets/videos/ebdd278b8b6b49c9a250033707052f1d.mp4",
+                    autoPlay: true,
+                    loop: true,
+                    muted: true,
+                    playsInline: true,
+                    className: "w-full h-72 sm:h-80 object-cover rounded-sm"
+                  })
             )
           )
         )
@@ -594,6 +903,7 @@
 
   window.KuuberaHeroAbout = {
     HeroSection,
+    VideoReelsCarouselSection,
     AboutSection,
     SpecialExperienceSection
   };

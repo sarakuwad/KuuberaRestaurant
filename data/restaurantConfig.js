@@ -49,7 +49,7 @@ window.KUUBERA_CONFIG = {
     googleMapsSearchUrl: "https://www.google.com/maps/search/?api=1&query=Kuubera+Pure+Veg+Gat+No+91+Varve+Budruk+Khed+Shivapur+Pune+Maharashtra+412205",
     googleReviewsUrl: "https://www.google.com/maps/search/?api=1&query=Kuubera+Pure+Veg+Varve+Budruk+Khed+Shivapur+Reviews",
     googleMapsEmbedUrl: "https://www.google.com/maps?q=Kuubera+Pure+Veg,Gat+No+91,Varve+Budruk,Khed+Shivapur,Maharashtra+412205&output=embed",
-    menuPdfUrl: "#download-menu" // Replace with path to PDF e.g. "assets/menu/kuubera-full-menu.pdf" when uploaded
+    menuPdfUrl: "./assets/menu/kuubera-full-menu.pdf"
   },
 
   // Verified Public Rating Summary (Across Google / Local Directories)

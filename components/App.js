@@ -15,7 +15,7 @@
 (function () {
   const h = React.createElement;
   const { Navbar, Footer } = window.KuuberaLayout;
-  const { HeroSection, AboutSection, SpecialExperienceSection } = window.KuuberaHeroAbout;
+  const { HeroSection, VideoReelsCarouselSection, AboutSection, SpecialExperienceSection } = window.KuuberaHeroAbout;
   const { SignatureDishesSection, InteractiveMenuSection } = window.KuuberaMenu;
   const { GallerySection, ReviewsSection } = window.KuuberaGalleryReviews;
   const { ContactLocationSection, ReservationModal, PrintableMenuModal } = window.KuuberaContactModals;
@@ -146,6 +146,7 @@
     const categories = window.KUUBERA_MENU_CATEGORIES;
     const galleryCategories = window.KUUBERA_GALLERY_CATEGORIES;
     const reviews = window.KUUBERA_REVIEWS;
+    const videos = window.KUUBERA_VIDEOS || [];
 
     // Persist owner edits automatically
     React.useEffect(() => {
@@ -250,9 +251,14 @@
             null,
             h(HeroSection, {
               config,
+              videos,
               onExploreMenu: () => navigateTo("menu"),
               onFindUs: () => navigateTo("contact"),
               onOpenReservation: () => setReservationModalOpen(true)
+            }),
+            h(VideoReelsCarouselSection, {
+              videos,
+              config
             }),
             h(AboutSection, {
               config,
@@ -353,6 +359,10 @@
               heading: PAGE_META.gallery.heading,
               subtitle: PAGE_META.gallery.subtitle,
               onBackHome: () => navigateTo("home")
+            }),
+            h(VideoReelsCarouselSection, {
+              videos,
+              config
             }),
             h(GallerySection, {
               categories: galleryCategories,

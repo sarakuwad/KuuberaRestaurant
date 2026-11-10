@@ -944,7 +944,19 @@
           ),
           h(
             "div",
-            { className: "flex items-center gap-3" },
+            { className: "flex flex-wrap items-center gap-3" },
+            h(
+              "a",
+              {
+                href: "./assets/menu/kuubera-full-menu.pdf",
+                download: "Kuubera-Pure-Veg-Menu.pdf",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className:
+                  "px-4 py-2 text-xs font-bold uppercase tracking-wider bg-emerald-600 text-white border border-[#D4AF37] rounded-sm hover:bg-emerald-500"
+              },
+              "Download Official Menu PDF ⬇"
+            ),
             h(
               "button",
               {
@@ -953,7 +965,7 @@
                 className:
                   "px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#D4AF37] text-[#091735] rounded-sm hover:bg-[#E8D7A5]"
               },
-              "Print / Save as PDF"
+              "Print / Save Sheet"
             ),
             h(
               "button",
