@@ -998,6 +998,43 @@
             h("p", { className: "text-xs text-[#091735]/80 mt-2" }, `${config.contact.addressLines.join(" ")} | Phone: ${config.contact.phoneDisplay} | ${config.contact.openingHours}`)
           ),
 
+          // Official 12-Page Menu Card Pictures Showcase
+          window.KUUBERA_MENU_PAGES &&
+            window.KUUBERA_MENU_PAGES.length > 0 &&
+            h(
+              "div",
+              { className: "space-y-4 border-b-2 border-[#D4AF37] pb-8" },
+              h(
+                "h3",
+                { className: "font-serif text-xl font-bold text-[#10265C] uppercase tracking-wider text-center" },
+                "Official 12-Page Printed Menu Cards"
+              ),
+              h(
+                "div",
+                { className: "grid grid-cols-1 sm:grid-cols-2 gap-6" },
+                window.KUUBERA_MENU_PAGES.map((pg) =>
+                  h(
+                    "div",
+                    {
+                      key: pg.pageNumber,
+                      className: "border-2 border-[#D4AF37] rounded-sm overflow-hidden bg-[#091735] shadow-md"
+                    },
+                    h("img", {
+                      src: pg.image,
+                      alt: `Page ${pg.pageNumber} — ${pg.title}`,
+                      className: "w-full h-auto object-contain"
+                    }),
+                    h(
+                      "div",
+                      { className: "px-3 py-2 bg-[#10265C] text-[#D4AF37] text-xs font-bold uppercase tracking-wider flex items-center justify-between" },
+                      h("span", null, `Page ${pg.pageNumber}`),
+                      h("span", { className: "text-[#FFF9EF] text-[11px] truncate ml-2" }, pg.title)
+                    )
+                  )
+                )
+              )
+            ),
+
           // Categories Grid
           h(
             "div",

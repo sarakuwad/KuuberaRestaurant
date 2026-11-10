@@ -689,3 +689,105 @@ window.KUUBERA_MENU_ITEMS = [
   m("jn-5", "Jain Veg Handi / Mix Veg", "Jain Specialities", "Jain", 360, "Seasonal above-ground garden vegetables and paneer cooked in a rich Jain gravy.", { isJain: true }),
   m("jn-6", "Jain Tawa Pulav / Jeera Rice", "Jain Specialities", "Jain", 280, "Fragrant basmati rice prepared without root vegetables, onion, or garlic (Jeera Rice: ₹240).", { isJain: true })
 ];
+
+// ==========================================================================
+// OFFICIAL 12-PAGE PRINTED MENU BOOK SHOWCASE (HIGH-RESOLUTION MENU CARDS)
+// ==========================================================================
+window.KUUBERA_MENU_PAGES = [
+  {
+    pageNumber: 1,
+    title: "Front Cover — Kuubera Pure Veg",
+    shortLabel: "01 • Cover",
+    subtitle: "कुबेरा - स्वाद का खजाना • Opening Time: 7:00 AM – 11:30 PM",
+    sections: ["Multicuisine Pure Veg", "7:00 AM – 11:30 PM"],
+    image: "./assets/menu/pages/menu-page-01.webp"
+  },
+  {
+    pageNumber: 2,
+    title: "Fresh Preparation Promise & Guest Notice",
+    shortLabel: "02 • Fresh Promise",
+    subtitle: "Each dish is crafted fresh • Kindly allow 15 minutes for preparation",
+    sections: ["Freshly Crafted", "Guest Information"],
+    image: "./assets/menu/pages/menu-page-02.webp"
+  },
+  {
+    pageNumber: 3,
+    title: "Idli, Dosa & Uttapam",
+    shortLabel: "03 • South Indian",
+    subtitle: "Served 7:00 AM to 10:30 PM • Gini Dosa, Butter Masala Dosa, David Uttapam & More",
+    sections: ["Idli", "Dosa", "Uttapam"],
+    image: "./assets/menu/pages/menu-page-03.webp"
+  },
+  {
+    pageNumber: 4,
+    title: "Snacks, Sandwiches, Burgers, Maharashtrian & Pulav",
+    shortLabel: "04 • Snacks & Maharashtrian",
+    subtitle: "Misal Pav, Pitthala Bhakri, Grill Sandwiches, Burgers, Sabudana Wada & Tawa Pulav",
+    sections: ["Snacks", "Sandwich", "Burger", "Maharashtrian", "Pulav"],
+    image: "./assets/menu/pages/menu-page-04.webp"
+  },
+  {
+    pageNumber: 5,
+    title: "Pav Bhaji, Chaat, Soups, Pizza & Papad",
+    shortLabel: "05 • Pav Bhaji, Chaat & Pizza",
+    subtitle: "Kuubera Special Pav Bhaji, Jain Pav Bhaji, SPDP, Hot Soups, Stone-Baked Pizzas & Khichiya",
+    sections: ["Pav Bhaji", "Chaat", "Soup", "Pizza", "Papad"],
+    image: "./assets/menu/pages/menu-page-05.webp"
+  },
+  {
+    pageNumber: 6,
+    title: "Punjabi Starters, Tandoori Kababs, Rice & Dal",
+    shortLabel: "06 • Starters, Rice & Dal",
+    subtitle: "Paneer Sholay, Veg Sheek Kabab, Paneer Tikka, Veg Dum Biryani, Dal Khichdi & Dal Makhani",
+    sections: ["Punjabi Starters", "Tandoori Starters", "Rice & Biryani", "Dal"],
+    image: "./assets/menu/pages/menu-page-06.webp"
+  },
+  {
+    pageNumber: 7,
+    title: "Punjabi Main Course & Raita",
+    shortLabel: "07 • Punjabi Main Course",
+    subtitle: "Served 11:00 AM to 11:30 PM • Chole Bhature, Paneer Butter Masala, Veg Tiranga, Kaju Masala & Koftas",
+    sections: ["Punjabi Main Course", "Paneer Specialities", "Raita & Salad"],
+    image: "./assets/menu/pages/menu-page-07.webp"
+  },
+  {
+    pageNumber: 8,
+    title: "Tandoori Roti, Naan, Paratha, Chinese Rice & Noodles",
+    shortLabel: "08 • Roti & Chinese Main",
+    subtitle: "Butter Garlic Naan, Stuffed Parathas, Veg Triple Schezwan, Hakka Noodles & Dragon Noodles",
+    sections: ["Roti & Naan", "Paratha & Bhakri", "Chinese Rice", "Chinese Noodles"],
+    image: "./assets/menu/pages/menu-page-08.webp"
+  },
+  {
+    pageNumber: 9,
+    title: "Dry Fruit Shakes, Ice Cream, Falooda, Fresh Juices & Mocktails",
+    shortLabel: "09 • Shakes, Falooda & Mocktails",
+    subtitle: "Kulfi Falooda, Kuubera Special Falooda, Dryfruit Shakes, Fresh Fruit Juices & Virgin Mojitos",
+    sections: ["Dry Fruit Shakes", "Ice Cream", "Falooda", "Fresh Juices", "Mocktails"],
+    image: "./assets/menu/pages/menu-page-09.webp"
+  },
+  {
+    pageNumber: 10,
+    title: "Chinese Appetizers, Chinese Gravy, Hot Beverages & Add Ons",
+    shortLabel: "10 • Chinese Starters & Tea/Coffee",
+    subtitle: "Paneer 65, Veg Crispy, Paneer Chilly, Filter Coffee, Special Masala Tea & Hot Chocolate",
+    sections: ["Chinese Gravy", "Chinese Appetizers", "Hot Beverages", "Add Ons"],
+    image: "./assets/menu/pages/menu-page-10.webp"
+  },
+  {
+    pageNumber: 11,
+    title: "Coolers, Milkshakes, Seasonal Shakes, Blossom Delight & Desserts",
+    shortLabel: "11 • Coolers, Blossom & Desserts",
+    subtitle: "Watermelon Blossom, Mango Lassi, Kuubera Special Thandai, Sitaphal Shake & Gulab Jamun",
+    sections: ["Coolers", "Milkshakes", "Seasonal Shakes", "Blossom Delight", "Dessert"],
+    image: "./assets/menu/pages/menu-page-11.webp"
+  },
+  {
+    pageNumber: 12,
+    title: "Back Cover — Kuubera Lawns & Party Orders",
+    shortLabel: "12 • Kuubera Lawns",
+    subtitle: "We Accept Party Orders • Open 7:00 AM to 11:30 PM • Gat No. 91, Varve Budruk, Pune",
+    sections: ["Kuubera Lawns", "Party Orders", "Visit Again"],
+    image: "./assets/menu/pages/menu-page-12.webp"
+  }
+];

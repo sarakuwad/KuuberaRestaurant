@@ -265,6 +265,623 @@
     );
   }
 
+  // 5A. CREATIVE INTERACTIVE 12-PAGE OFFICIAL MENU BOOK & VISUAL GALLERY SHOWCASE
+  function RoyalMenuBookShowcase({ onOpenPrintableMenu }) {
+    const menuPages = window.KUUBERA_MENU_PAGES || [];
+    const [viewMode, setViewMode] = React.useState("book"); // "book" | "grid"
+    const [spreadMode, setSpreadMode] = React.useState(true); // 2-page open book spread on desktop vs single page
+    const [currentPageIdx, setCurrentPageIdx] = React.useState(2); // Start open at Page 3 & Page 4 (Idli/Dosa + Snacks/Maharashtrian) so guests immediately see dishes!
+    const [lightboxIdx, setLightboxIdx] = React.useState(null);
+    const [zoomLevel, setZoomLevel] = React.useState(1);
+
+    if (!menuPages || menuPages.length === 0) return null;
+
+    const total = menuPages.length;
+    const step = spreadMode ? 2 : 1;
+
+    const handlePrev = () => {
+      setCurrentPageIdx((prev) => (prev - step + total) % total);
+    };
+
+    const handleNext = () => {
+      setCurrentPageIdx((prev) => (prev + step) % total);
+    };
+
+    const leftPage = menuPages[currentPageIdx];
+    const rightPage = spreadMode ? menuPages[(currentPageIdx + 1) % total] : null;
+
+    // Keyboard navigation for Lightbox
+    React.useEffect(() => {
+      if (lightboxIdx === null) return;
+      const onKeyDown = (e) => {
+        if (e.key === "Escape") {
+          setLightboxIdx(null);
+          setZoomLevel(1);
+        } else if (e.key === "ArrowRight") {
+          setLightboxIdx((prev) => (prev + 1) % total);
+          setZoomLevel(1);
+        } else if (e.key === "ArrowLeft") {
+          setLightboxIdx((prev) => (prev - 1 + total) % total);
+          setZoomLevel(1);
+        }
+      };
+      window.addEventListener("keydown", onKeyDown);
+      return () => window.removeEventListener("keydown", onKeyDown);
+    }, [lightboxIdx, total]);
+
+    return h(
+      "div",
+      {
+        className:
+          "mb-14 bg-gradient-to-b from-[#091735] via-[#10265C] to-[#091735] text-[#FFF9EF] rounded-sm border-2 border-[#D4AF37] shadow-[0_20px_60px_rgba(9,23,53,0.45)] overflow-hidden"
+      },
+      // Top Royal Book Header Bar
+      h(
+        "div",
+        {
+          className:
+            "p-5 sm:p-7 bg-[#091735]/90 border-b border-[#D4AF37]/40 flex flex-col lg:flex-row lg:items-center justify-between gap-4"
+        },
+        h(
+          "div",
+          null,
+          h(
+            "div",
+            {
+              className:
+                "inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#D4AF37] mb-1.5"
+            },
+            h("span", { className: "w-2 h-2 rounded-full bg-[#D4AF37]" }),
+            "OFFICIAL 12-PAGE RESTAURANT MENU CARD"
+          ),
+          h(
+            "h3",
+            {
+              className:
+                "font-serif text-2xl sm:text-3xl font-extrabold uppercase tracking-wider gold-metallic-text"
+            },
+            "INTERACTIVE ROYAL MENU BOOK"
+          ),
+          h(
+            "p",
+            { className: "text-xs sm:text-sm text-[#E8D7A5]/90 mt-1" },
+            "Flip through all 12 pages of Kuubera's actual table menu card—or switch to the 12-Card Visual Gallery & click any page to zoom in HD."
+          )
+        ),
+
+        // View Mode Switcher & PDF Download
+        h(
+          "div",
+          { className: "flex flex-wrap items-center gap-2.5" },
+          h(
+            "button",
+            {
+              type: "button",
+              onClick: () => setViewMode("book"),
+              className: `px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-sm border transition-all ${
+                viewMode === "book"
+                  ? "bg-[#D4AF37] text-[#091735] border-[#D4AF37] shadow-md"
+                  : "bg-[#10265C] text-[#E8D7A5] border-[#D4AF37]/50 hover:border-[#D4AF37]"
+              }`
+            },
+            "📖 Flipbook View"
+          ),
+          h(
+            "button",
+            {
+              type: "button",
+              onClick: () => setViewMode("grid"),
+              className: `px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-sm border transition-all ${
+                viewMode === "grid"
+                  ? "bg-[#D4AF37] text-[#091735] border-[#D4AF37] shadow-md"
+                  : "bg-[#10265C] text-[#E8D7A5] border-[#D4AF37]/50 hover:border-[#D4AF37]"
+              }`
+            },
+            "🖼️ All 12 Pages Grid"
+          ),
+          viewMode === "book" &&
+            h(
+              "button",
+              {
+                type: "button",
+                onClick: () => setSpreadMode((s) => !s),
+                className:
+                  "hidden md:inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-sm bg-[#091735] text-[#E8D7A5] border border-[#D4AF37]/50 hover:border-[#D4AF37] transition-all"
+              },
+              spreadMode ? "1-Page View" : "2-Page Spread"
+            ),
+          h(
+            "a",
+            {
+              href: "./assets/menu/kuubera-full-menu.pdf",
+              download: "Kuubera-Pure-Veg-Menu.pdf",
+              target: "_blank",
+              rel: "noopener noreferrer",
+              className:
+                "inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-sm bg-[#8B1726] text-[#FFF9EF] border border-[#D4AF37] hover:bg-[#a31c2d] transition-all shadow-md"
+            },
+            "⬇ PDF Menu"
+          )
+        )
+      ),
+
+      // Quick-Jump Page Selector Ribbon (Pages 1 to 12)
+      h(
+        "div",
+        {
+          className:
+            "px-4 sm:px-7 py-3 bg-[#091735]/60 border-b border-[#D4AF37]/30 flex items-center gap-2 overflow-x-auto hide-scrollbar"
+        },
+        menuPages.map((pg, idx) => {
+          const isCurrent =
+            viewMode === "book"
+              ? idx === currentPageIdx || (spreadMode && idx === (currentPageIdx + 1) % total)
+              : false;
+          return h(
+            "button",
+            {
+              key: pg.pageNumber,
+              type: "button",
+              onClick: () => {
+                if (viewMode === "grid") {
+                  setLightboxIdx(idx);
+                  setZoomLevel(1);
+                } else {
+                  setCurrentPageIdx(idx);
+                }
+              },
+              className: `shrink-0 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider rounded-sm border transition-all ${
+                isCurrent
+                  ? "bg-[#D4AF37] text-[#091735] border-[#D4AF37] shadow"
+                  : "bg-[#091735]/80 text-[#E8D7A5] border-[#D4AF37]/35 hover:border-[#D4AF37] hover:text-[#FFF9EF]"
+              }`
+            },
+            pg.shortLabel
+          );
+        })
+      ),
+
+      // MAIN BODY: FLIPBOOK SPREAD VIEW OR 12-PAGE GALLERY GRID
+      viewMode === "book"
+        ? h(
+            "div",
+            { className: "p-4 sm:p-8 lg:p-10" },
+            // Open Book Frame with Gold Binding Spine
+            h(
+              "div",
+              {
+                className:
+                  "relative max-w-6xl mx-auto bg-[#061026] p-3 sm:p-6 rounded-sm border-2 border-[#D4AF37]/80 shadow-[0_25px_70px_rgba(0,0,0,0.75)]"
+              },
+              // Corner Gold Ornaments
+              h("div", { className: "absolute top-1.5 left-1.5 w-4 h-4 border-t-2 border-l-2 border-[#D4AF37] pointer-events-none" }),
+              h("div", { className: "absolute top-1.5 right-1.5 w-4 h-4 border-t-2 border-r-2 border-[#D4AF37] pointer-events-none" }),
+              h("div", { className: "absolute bottom-1.5 left-1.5 w-4 h-4 border-b-2 border-l-2 border-[#D4AF37] pointer-events-none" }),
+              h("div", { className: "absolute bottom-1.5 right-1.5 w-4 h-4 border-b-2 border-r-2 border-[#D4AF37] pointer-events-none" }),
+
+              // Book Pages Container
+              h(
+                "div",
+                {
+                  className: `grid grid-cols-1 ${
+                    spreadMode ? "md:grid-cols-2" : "max-w-2xl mx-auto"
+                  } gap-4 md:gap-0 relative items-stretch`
+                },
+                // Center Gold Book Spine (Desktop Spread Mode)
+                spreadMode &&
+                  h("div", {
+                    className:
+                      "hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-5 z-20 bg-gradient-to-r from-black/60 via-[#D4AF37]/75 to-black/60 pointer-events-none shadow-inner"
+                  }),
+
+                // LEFT PAGE (or Single Page)
+                h(
+                  "div",
+                  {
+                    onClick: () => {
+                      setLightboxIdx(currentPageIdx);
+                      setZoomLevel(1);
+                    },
+                    className:
+                      "group relative bg-[#091735] border border-[#D4AF37]/50 md:rounded-l-sm overflow-hidden cursor-zoom-in shadow-xl flex flex-col justify-between"
+                  },
+                  h(
+                    "div",
+                    { className: "relative overflow-hidden bg-[#091735]" },
+                    h("img", {
+                      src: leftPage.image,
+                      alt: `Kuubera Menu Page ${leftPage.pageNumber} — ${leftPage.title}`,
+                      className:
+                        "w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                    }),
+                    h(
+                      "div",
+                      {
+                        className:
+                          "absolute top-3 left-3 px-3 py-1 rounded-sm bg-[#091735]/90 text-[#D4AF37] border border-[#D4AF37]/60 text-[11px] font-bold uppercase tracking-widest backdrop-blur-sm"
+                      },
+                      `Page ${leftPage.pageNumber} of ${total}`
+                    ),
+                    h(
+                      "div",
+                      {
+                        className:
+                          "absolute bottom-3 right-3 px-3 py-1.5 rounded-sm bg-[#091735]/90 text-[#FFF9EF] border border-[#D4AF37] text-[11px] font-bold uppercase tracking-wider opacity-90 group-hover:bg-[#D4AF37] group-hover:text-[#091735] transition-all"
+                      },
+                      "🔍 Click to Zoom HD"
+                    )
+                  ),
+                  h(
+                    "div",
+                    {
+                      className:
+                        "p-3.5 bg-[#091735] border-t border-[#D4AF37]/30 flex items-center justify-between gap-2"
+                    },
+                    h(
+                      "div",
+                      null,
+                      h("p", { className: "text-xs sm:text-sm font-bold text-[#D4AF37] uppercase tracking-wider" }, leftPage.title),
+                      h("p", { className: "text-[11px] text-[#E8D7A5]/80 line-clamp-1" }, leftPage.subtitle)
+                    ),
+                    h(
+                      "button",
+                      {
+                        type: "button",
+                        onClick: (e) => {
+                          e.stopPropagation();
+                          setLightboxIdx(currentPageIdx);
+                          setZoomLevel(1);
+                        },
+                        className:
+                          "shrink-0 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-[#10265C] text-[#D4AF37] border border-[#D4AF37]/50 rounded-sm hover:bg-[#D4AF37] hover:text-[#091735]"
+                      },
+                      "Full Screen"
+                    )
+                  )
+                ),
+
+                // RIGHT PAGE (Desktop Spread Mode / Stacked on Mobile)
+                spreadMode &&
+                  rightPage &&
+                  h(
+                    "div",
+                    {
+                      onClick: () => {
+                        setLightboxIdx((currentPageIdx + 1) % total);
+                        setZoomLevel(1);
+                      },
+                      className:
+                        "group relative bg-[#091735] border border-[#D4AF37]/50 md:rounded-r-sm overflow-hidden cursor-zoom-in shadow-xl flex flex-col justify-between"
+                    },
+                    h(
+                      "div",
+                      { className: "relative overflow-hidden bg-[#091735]" },
+                      h("img", {
+                        src: rightPage.image,
+                        alt: `Kuubera Menu Page ${rightPage.pageNumber} — ${rightPage.title}`,
+                        className:
+                          "w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                      }),
+                      h(
+                        "div",
+                        {
+                          className:
+                            "absolute top-3 right-3 px-3 py-1 rounded-sm bg-[#091735]/90 text-[#D4AF37] border border-[#D4AF37]/60 text-[11px] font-bold uppercase tracking-widest backdrop-blur-sm"
+                        },
+                        `Page ${rightPage.pageNumber} of ${total}`
+                      ),
+                      h(
+                        "div",
+                        {
+                          className:
+                            "absolute bottom-3 right-3 px-3 py-1.5 rounded-sm bg-[#091735]/90 text-[#FFF9EF] border border-[#D4AF37] text-[11px] font-bold uppercase tracking-wider opacity-90 group-hover:bg-[#D4AF37] group-hover:text-[#091735] transition-all"
+                        },
+                        "🔍 Click to Zoom HD"
+                      )
+                    ),
+                    h(
+                      "div",
+                      {
+                        className:
+                          "p-3.5 bg-[#091735] border-t border-[#D4AF37]/30 flex items-center justify-between gap-2"
+                      },
+                      h(
+                        "div",
+                        null,
+                        h("p", { className: "text-xs sm:text-sm font-bold text-[#D4AF37] uppercase tracking-wider" }, rightPage.title),
+                        h("p", { className: "text-[11px] text-[#E8D7A5]/80 line-clamp-1" }, rightPage.subtitle)
+                      ),
+                      h(
+                        "button",
+                        {
+                          type: "button",
+                          onClick: (e) => {
+                            e.stopPropagation();
+                            setLightboxIdx((currentPageIdx + 1) % total);
+                            setZoomLevel(1);
+                          },
+                          className:
+                            "shrink-0 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-[#10265C] text-[#D4AF37] border border-[#D4AF37]/50 rounded-sm hover:bg-[#D4AF37] hover:text-[#091735]"
+                        },
+                        "Full Screen"
+                      )
+                    )
+                  )
+              ),
+
+              // Book Page Turn Controls Bar
+              h(
+                "div",
+                {
+                  className:
+                    "mt-6 pt-4 border-t border-[#D4AF37]/30 flex flex-wrap items-center justify-between gap-4"
+                },
+                h(
+                  "button",
+                  {
+                    type: "button",
+                    onClick: handlePrev,
+                    className:
+                      "inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] bg-[#10265C] text-[#D4AF37] border border-[#D4AF37] rounded-sm hover:bg-[#D4AF37] hover:text-[#091735] transition-all shadow-md"
+                  },
+                  "◀ Previous Page"
+                ),
+                h(
+                  "div",
+                  { className: "text-center" },
+                  h(
+                    "p",
+                    { className: "text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF37]" },
+                    spreadMode && rightPage
+                      ? `Viewing Pages ${leftPage.pageNumber} & ${rightPage.pageNumber} of ${total}`
+                      : `Viewing Page ${leftPage.pageNumber} of ${total}`
+                  ),
+                  h(
+                    "p",
+                    { className: "text-[11px] text-[#E8D7A5]/75 mt-0.5" },
+                    "Tip: Click any menu page to open in full-screen HD zoom"
+                  )
+                ),
+                h(
+                  "button",
+                  {
+                    type: "button",
+                    onClick: handleNext,
+                    className:
+                      "inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] bg-[#8B1726] text-[#FFF9EF] border border-[#D4AF37] rounded-sm hover:bg-[#a31c2d] transition-all shadow-md"
+                  },
+                  "Turn Next Page ▶"
+                )
+              )
+            )
+          )
+        : // MODE 2: ALL 12 MENU PAGES VISUAL GALLERY GRID
+          h(
+            "div",
+            { className: "p-5 sm:p-8" },
+            h(
+              "div",
+              { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" },
+              menuPages.map((pg, idx) =>
+                h(
+                  "div",
+                  {
+                    key: pg.pageNumber,
+                    onClick: () => {
+                      setLightboxIdx(idx);
+                      setZoomLevel(1);
+                    },
+                    className:
+                      "group bg-[#091735] border-2 border-[#D4AF37]/50 hover:border-[#D4AF37] rounded-sm overflow-hidden shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-zoom-in flex flex-col justify-between"
+                  },
+                  h(
+                    "div",
+                    { className: "relative overflow-hidden bg-[#061026]" },
+                    h("img", {
+                      src: pg.image,
+                      alt: `Kuubera Menu Page ${pg.pageNumber} — ${pg.title}`,
+                      loading: "lazy",
+                      className:
+                        "w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                    }),
+                    h(
+                      "span",
+                      {
+                        className:
+                          "absolute top-2.5 left-2.5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-[#091735]/90 text-[#D4AF37] border border-[#D4AF37]/60 rounded-sm"
+                      },
+                      `Page ${pg.pageNumber}`
+                    ),
+                    h(
+                      "span",
+                      {
+                        className:
+                          "absolute bottom-2.5 right-2.5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-[#8B1726]/95 text-[#FFF9EF] border border-[#D4AF37] rounded-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                      },
+                      "🔍 View HD"
+                    )
+                  ),
+                  h(
+                    "div",
+                    { className: "p-3.5 bg-[#091735] border-t border-[#D4AF37]/30 space-y-1.5" },
+                    h(
+                      "h4",
+                      { className: "text-xs font-bold uppercase tracking-wider text-[#D4AF37] line-clamp-1" },
+                      pg.title
+                    ),
+                    h(
+                      "div",
+                      { className: "flex flex-wrap gap-1" },
+                      (pg.sections || []).map((sec) =>
+                        h(
+                          "span",
+                          {
+                            key: sec,
+                            className:
+                              "px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider bg-[#10265C] text-[#E8D7A5] border border-[#D4AF37]/30 rounded-sm"
+                          },
+                          sec
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+
+      // FULL-SCREEN HD ZOOMABLE MENU PAGE LIGHTBOX MODAL
+      lightboxIdx !== null &&
+        menuPages[lightboxIdx] &&
+        h(
+          "div",
+          {
+            role: "dialog",
+            "aria-modal": "true",
+            "aria-label": `Kuubera Menu Page ${menuPages[lightboxIdx].pageNumber}`,
+            onClick: () => {
+              setLightboxIdx(null);
+              setZoomLevel(1);
+            },
+            className:
+              "fixed inset-0 z-50 bg-[#061026]/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 animate-fadeIn"
+          },
+          // Top Lightbox Controls Bar
+          h(
+            "div",
+            {
+              onClick: (e) => e.stopPropagation(),
+              className:
+                "max-w-6xl w-full mx-auto px-4 py-3 bg-[#10265C] border border-[#D4AF37] rounded-sm flex flex-wrap items-center justify-between gap-3 shadow-2xl"
+            },
+            h(
+              "div",
+              null,
+              h(
+                "p",
+                { className: "text-xs sm:text-sm font-bold uppercase tracking-wider text-[#D4AF37]" },
+                `Page ${menuPages[lightboxIdx].pageNumber} of ${total} — ${menuPages[lightboxIdx].title}`
+              ),
+              h(
+                "p",
+                { className: "text-[11px] text-[#E8D7A5]" },
+                menuPages[lightboxIdx].subtitle
+              )
+            ),
+            h(
+              "div",
+              { className: "flex flex-wrap items-center gap-2" },
+              [1, 1.6, 2.2].map((z) =>
+                h(
+                  "button",
+                  {
+                    key: z,
+                    type: "button",
+                    onClick: () => setZoomLevel(z),
+                    className: `px-2.5 py-1 text-xs font-bold uppercase rounded-sm border ${
+                      zoomLevel === z
+                        ? "bg-[#D4AF37] text-[#091735] border-[#D4AF37]"
+                        : "bg-[#091735] text-[#E8D7A5] border-[#D4AF37]/40 hover:border-[#D4AF37]"
+                    }`
+                  },
+                  `${Math.round(z * 100)}%`
+                )
+              ),
+              h(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => {
+                    setLightboxIdx((prev) => (prev - 1 + total) % total);
+                    setZoomLevel(1);
+                  },
+                  className:
+                    "px-3 py-1 text-xs font-bold uppercase bg-[#091735] text-[#D4AF37] border border-[#D4AF37] rounded-sm hover:bg-[#D4AF37] hover:text-[#091735]"
+                },
+                "◀ Prev"
+              ),
+              h(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => {
+                    setLightboxIdx((prev) => (prev + 1) % total);
+                    setZoomLevel(1);
+                  },
+                  className:
+                    "px-3 py-1 text-xs font-bold uppercase bg-[#091735] text-[#D4AF37] border border-[#D4AF37] rounded-sm hover:bg-[#D4AF37] hover:text-[#091735]"
+                },
+                "Next ▶"
+              ),
+              h(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => {
+                    setLightboxIdx(null);
+                    setZoomLevel(1);
+                  },
+                  className:
+                    "px-3 py-1 text-xs font-bold uppercase bg-[#8B1726] text-[#FFF9EF] border border-[#D4AF37] rounded-sm"
+                },
+                "Close ✕"
+              )
+            )
+          ),
+
+          // Center Zoomable Menu Image Canvas
+          h(
+            "div",
+            {
+              onClick: (e) => e.stopPropagation(),
+              className:
+                "flex-1 my-3 overflow-auto flex items-start justify-center p-2 sm:p-4"
+            },
+            h("img", {
+              src: menuPages[lightboxIdx].image,
+              alt: menuPages[lightboxIdx].title,
+              onClick: () => setZoomLevel((z) => (z === 1 ? 1.6 : z === 1.6 ? 2.2 : 1)),
+              style: {
+                width: `${Math.round(zoomLevel * 540)}px`,
+                maxWidth: zoomLevel === 1 ? "92vw" : "none"
+              },
+              className:
+                "h-auto object-contain rounded-sm border-2 border-[#D4AF37] shadow-[0_20px_60px_rgba(0,0,0,0.85)] cursor-zoom-in transition-all duration-200"
+            })
+          ),
+
+          // Bottom Page Strip inside Lightbox
+          h(
+            "div",
+            {
+              onClick: (e) => e.stopPropagation(),
+              className:
+                "max-w-6xl w-full mx-auto px-3 py-2 bg-[#091735] border border-[#D4AF37]/50 rounded-sm flex items-center gap-1.5 overflow-x-auto hide-scrollbar"
+            },
+            menuPages.map((pg, idx) =>
+              h(
+                "button",
+                {
+                  key: pg.pageNumber,
+                  type: "button",
+                  onClick: () => {
+                    setLightboxIdx(idx);
+                    setZoomLevel(1);
+                  },
+                  className: `shrink-0 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-sm border ${
+                    idx === lightboxIdx
+                      ? "bg-[#D4AF37] text-[#091735] border-[#D4AF37]"
+                      : "bg-[#10265C] text-[#E8D7A5] border-[#D4AF37]/30"
+                  }`
+                },
+                pg.shortLabel
+              )
+            )
+          )
+        )
+    );
+  }
+
   // 5. OUR MENU — INTERACTIVE MENU SECTION & DEDICATED PAGE
   function InteractiveMenuSection({
     categories,
@@ -363,9 +980,12 @@
           h(
             "p",
             { className: "text-sm sm:text-base text-[#091735]/80 leading-relaxed" },
-            "Explore Kuubera's complete official menu across 14 categories with verified INR prices. South Indian (7:00 AM – 10:30 PM) • Pav Bhaji (10:00 AM – 11:30 PM) • Punjabi, Chinese & Soups (11:00 AM – 11:30 PM). We Accept Party Orders."
+            "Explore Kuubera's complete official 12-page menu book in our interactive flipbook below, or search and filter across all 14 pure vegetarian & Jain categories. South Indian (7:00 AM – 10:30 PM) • Pav Bhaji (10:00 AM – 11:30 PM) • Punjabi, Chinese & Soups (11:00 AM – 11:30 PM)."
           )
         ),
+
+        // Interactive 12-Page Official Menu Book & Visual Card Showcase
+        h(RoyalMenuBookShowcase, { onOpenPrintableMenu }),
 
         // Interactive Controls Bar: Search + Quick Filters + Download Full Menu
         h(
@@ -746,6 +1366,7 @@
 
   window.KuuberaMenu = {
     SignatureDishesSection,
+    RoyalMenuBookShowcase,
     InteractiveMenuSection,
     formatDishPrice
   };
