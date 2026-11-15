@@ -57,7 +57,6 @@ window.KUUBERA_CONFIG = {
     overallRating: "4.6",
     maxRating: "5.0",
     totalReviewsText: "1,300+ Verified Guest Ratings",
-    costForTwoText: "₹350 – ₹400 for two (approx.)",
     highlights: [
       "Spacious & Hygienic Dining Hall",
       "Visible Open Food Preparation View",

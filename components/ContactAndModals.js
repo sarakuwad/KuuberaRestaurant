@@ -1057,7 +1057,6 @@
                   "ul",
                   { className: "space-y-2" },
                   items.map((dish) => {
-                    const priceObj = formatDishPrice(dish.price);
                     return h(
                       "li",
                       { key: dish.id, className: "text-xs flex items-baseline justify-between gap-2" },
@@ -1067,11 +1066,6 @@
                         h("span", { className: "font-semibold text-[#091735]" }, dish.name),
                         dish.isJain &&
                           h("span", { className: "ml-1.5 text-[10px] text-[#8B1726] font-semibold" }, "(Jain Available)")
-                      ),
-                      h(
-                        "span",
-                        { className: "font-semibold text-[#10265C] shrink-0" },
-                        priceObj.isVerifiedNumber ? priceObj.text : "At Counter"
                       )
                     );
                   })

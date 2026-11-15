@@ -454,7 +454,7 @@
               h(
                 "p",
                 { className: "text-xs font-semibold text-[#D4AF37] pt-1" },
-                `Avg. Cost: ${config.ratingsSummary.costForTwoText}`
+                "100% Pure Vegetarian & Jain Dining"
               )
             )
           )

@@ -173,7 +173,7 @@
                       )
                   ),
 
-                  // Dish Title & Price
+                  // Dish Title (No Prices Displayed)
                   h(
                     "div",
                     { className: "flex items-baseline justify-between gap-3 pt-1" },
@@ -184,22 +184,7 @@
                           "font-serif text-2xl font-bold text-[#FFF9EF] group-hover:text-[#D4AF37] transition-colors"
                       },
                       dish.name
-                    ),
-                    priceObj.isVerifiedNumber
-                      ? h(
-                          "span",
-                          { className: "font-serif text-xl font-bold text-[#D4AF37] shrink-0" },
-                          priceObj.text
-                        )
-                      : h(
-                          "span",
-                          {
-                            className:
-                              "text-[11px] uppercase tracking-wider px-2 py-0.5 rounded-sm bg-[#091735] text-[#E8D7A5] border border-[#D4AF37]/30 shrink-0",
-                            title: "Owner can set exact INR price in menuData.js or Owner Admin Studio"
-                          },
-                          "Ask at Counter"
-                        )
+                    )
                   ),
 
                   // Description
@@ -1242,7 +1227,7 @@
                         h(
                           "div",
                           { className: "space-y-2" },
-                          // Top Badges Row: Pure Veg + Popular + Jain
+                          // Top Badges Row: Pure Veg + Popular + Jain (No Prices Displayed)
                           h(
                             "div",
                             { className: "flex items-center justify-between gap-2 flex-wrap" },
@@ -1260,27 +1245,7 @@
                                   "★ Popular"
                                 ),
                               dish.isJain && h(JainIndicator, { lightMode: true })
-                            ),
-
-                            // Price Display (Verified INR or Unpublished Badge)
-                            priceObj.isVerifiedNumber
-                              ? h(
-                                  "span",
-                                  {
-                                    className:
-                                      "font-serif text-xl font-bold text-[#10265C] bg-[#FFF9EF] px-2.5 py-0.5 border border-[#D4AF37]/50 rounded-sm"
-                                  },
-                                  priceObj.text
-                                )
-                              : h(
-                                  "span",
-                                  {
-                                    className:
-                                      "text-[11px] font-medium uppercase tracking-wider text-[#10265C]/70 bg-[#FFF9EF] px-2.5 py-1 border border-[#D4AF37]/40 rounded-sm",
-                                    title: "Price left unpublished until verified by owner in menuData.js"
-                                  },
-                                  "Price at Restaurant"
-                                )
+                            )
                           ),
 
                           // Dish Name with Dotted Leader
@@ -1330,7 +1295,7 @@
             h(
               "p",
               { className: "text-xs sm:text-sm text-[#E8D7A5]/90" },
-              "Average meal cost is ₹350–₹400 for two. Call or WhatsApp us on +91 90281 67333 for live counter tariffs, bulk travel orders, or custom Jain preparations."
+              "Call or WhatsApp us on +91 90281 67333 for family reservations, bulk travel orders, party orders, or custom Jain preparations."
             )
           ),
           h(

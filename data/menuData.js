@@ -31,12 +31,12 @@ window.KUUBERA_SIGNATURE_DISHES = [
     name: "Masala Dosa",
     category: "South Indian",
     cuisineGroup: "South Indian",
-    price: 165,
+    price: null,
     isVeg: true,
     isJain: true,
     isPopular: true,
     badge: "South Indian Classic • 7AM–10:30PM",
-    description: "Crisp golden fermented rice-and-lentil crepe filled with spiced potato masala, served with fresh coconut chutney and piping hot sambar. (Butter Masala Dosa Kuubera Special: ₹190)",
+    description: "Crisp golden fermented rice-and-lentil crepe filled with spiced potato masala, served with fresh coconut chutney and piping hot sambar.",
     reviewNote: "Praised in guest reviews for crisp preparation and authentic South Indian flavour.",
     image: "",
     recommendedImagePath: "assets/images/menu/masala-dosa.webp"
@@ -46,7 +46,7 @@ window.KUUBERA_SIGNATURE_DISHES = [
     name: "Misal Pav",
     category: "Maharashtrian",
     cuisineGroup: "Snacks",
-    price: 150,
+    price: null,
     isVeg: true,
     isJain: false,
     isPopular: true,
@@ -61,13 +61,13 @@ window.KUUBERA_SIGNATURE_DISHES = [
     name: "Paneer Tikka",
     category: "Starters",
     cuisineGroup: "North Indian",
-    price: 390,
+    price: null,
     isVeg: true,
     isJain: true,
     isPopular: true,
     badge: "Tandoori Starter Speciality",
     description: "Succulent cubes of fresh cottage cheese marinated in spiced hung curd and roasted in the clay tandoor with bell peppers and aromatics.",
-    reviewNote: "Also available in Lasuni, Pudina, Malai, Achari & Jungli Tikka (₹390).",
+    reviewNote: "Also available in Lasuni, Pudina, Malai, Achari & Jungli Tikka.",
     image: "",
     recommendedImagePath: "assets/images/menu/paneer-tikka.webp"
   },
@@ -76,7 +76,7 @@ window.KUUBERA_SIGNATURE_DISHES = [
     name: "Chole Bhature",
     category: "Punjabi",
     cuisineGroup: "North Indian",
-    price: 330,
+    price: null,
     isVeg: true,
     isJain: false,
     isPopular: true,
@@ -91,13 +91,13 @@ window.KUUBERA_SIGNATURE_DISHES = [
     name: "Paneer Butter Masala",
     category: "Punjabi",
     cuisineGroup: "North Indian",
-    price: 390,
+    price: null,
     isVeg: true,
     isJain: true,
     isPopular: true,
     badge: "Chef's Signature Gravy",
     description: "Soft cottage cheese cubes simmered in a rich, velvety tomato-cashew butter gravy finished with aromatic kasuri methi and fresh cream.",
-    reviewNote: "Pairs effortlessly with Butter Naan (₹105) or Butter Roti (₹60).",
+    reviewNote: "Pairs effortlessly with hot Butter Naan or Tandoori Butter Roti.",
     image: "",
     recommendedImagePath: "assets/images/menu/paneer-butter-masala.webp"
   },
@@ -106,26 +106,26 @@ window.KUUBERA_SIGNATURE_DISHES = [
     name: "Dal Makhani",
     category: "North Indian",
     cuisineGroup: "North Indian",
-    price: 330,
+    price: null,
     isVeg: true,
     isJain: true,
     isPopular: true,
     badge: "Slow-Simmered Classic",
     description: "Whole black lentils and red kidney beans slow-cooked with tomatoes, ginger, butter, and fresh cream for a rich, comforting delicacy.",
-    reviewNote: "A staple North Indian accompaniment for Jeera Rice (₹240) and Tandoori Rotis.",
+    reviewNote: "A staple North Indian accompaniment for Jeera Rice and Tandoori Rotis.",
     image: "",
     recommendedImagePath: "assets/images/menu/dal-makhani.webp"
   }
 ];
 
-// Helper to create menu items concisely
-function m(id, name, category, cuisineGroup, price, description, opts = {}) {
+// Helper to create menu items concisely (Prices omitted across website)
+function m(id, name, category, cuisineGroup, _price, description, opts = {}) {
   return {
     id,
     name,
     category,
     cuisineGroup,
-    price,
+    price: null,
     isVeg: true,
     isJain: Boolean(opts.isJain),
     isPopular: Boolean(opts.isPopular),
@@ -176,7 +176,7 @@ window.KUUBERA_MENU_ITEMS = [
   m("dosa-26", "Chocolate Dosa", "South Indian", "South Indian", 230, "Sweet crispy dosa layered with rich melted chocolate—loved by kids and families.", { isJain: true }),
   m("dosa-27", "Schezwan Dosa", "South Indian", "South Indian", 230, "Crisp dosa brushed with fiery Indo-Chinese Schezwan sauce.", { isJain: true }),
   m("dosa-28", "Neer Dosa", "South Indian", "South Indian", 160, "Delicate, soft Mangalorean-style thin rice crepes served with coconut chutney.", { isJain: true }),
-  m("dosa-29", "Extra Cheese / Extra Butter", "South Indian", "South Indian", 50, "Add-on Extra Cheese (₹50) or Extra Butter (₹35).", { isJain: true }),
+  m("dosa-29", "Extra Cheese / Extra Butter", "South Indian", "South Indian", 50, "Add-on Extra Cheese or Extra Butter.", { isJain: true }),
 
   // UTTAPAM
   m("utt-1", "Plain Uttapam", "South Indian", "South Indian", 160, "Thick, savoury South Indian rice-lentil pancake served with sambar and chutney.", { isJain: true }),
@@ -685,9 +685,9 @@ window.KUUBERA_MENU_ITEMS = [
   m("jn-1", "Jain Pav Bhaji", "Jain Specialities", "Jain", 240, "Prepared strictly without onion, garlic, or potato—served with soft buttered pav (10 AM – 11:30 PM).", { isJain: true, isPopular: true }),
   m("jn-2", "Jain Pizza", "Jain Specialities", "Jain", 320, "Freshly baked pizza with no-onion, no-garlic house sauce, capsicum, corn, olives, and cheese.", { isJain: true, isPopular: true }),
   m("jn-3", "Jain Paneer Butter Masala", "Jain Specialities", "Jain", 390, "Rich no-onion, no-garlic tomato-cashew butter gravy with fresh cottage cheese cubes.", { isJain: true, isPopular: true }),
-  m("jn-4", "Jain Dal Fry / Dal Tadka", "Jain Specialities", "Jain", 240, "Yellow lentils tempered with cumin, mustard seeds, tomatoes, and pure ghee (Dal Tadka: ₹280).", { isJain: true, isPopular: true }),
+  m("jn-4", "Jain Dal Fry / Dal Tadka", "Jain Specialities", "Jain", 240, "Yellow lentils tempered with cumin, mustard seeds, tomatoes, and pure ghee.", { isJain: true, isPopular: true }),
   m("jn-5", "Jain Veg Handi / Mix Veg", "Jain Specialities", "Jain", 360, "Seasonal above-ground garden vegetables and paneer cooked in a rich Jain gravy.", { isJain: true }),
-  m("jn-6", "Jain Tawa Pulav / Jeera Rice", "Jain Specialities", "Jain", 280, "Fragrant basmati rice prepared without root vegetables, onion, or garlic (Jeera Rice: ₹240).", { isJain: true })
+  m("jn-6", "Jain Tawa Pulav / Jeera Rice", "Jain Specialities", "Jain", 280, "Fragrant basmati rice prepared without root vegetables, onion, or garlic.", { isJain: true })
 ];
 
 // ==========================================================================
