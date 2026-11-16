@@ -75,94 +75,96 @@
       "section",
       {
         className:
-          "relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#091735] text-[#FFF9EF] py-20 px-4 sm:px-6 lg:px-8"
+          "relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#09132D] text-[#F8F5ED] py-24 px-4 sm:px-6 lg:px-8"
       },
-      // Background Video Carousel Player
+      // Authentic Kuubera High-Resolution Backdrop Photograph + Live Video
+      h("img", {
+        src: "./assets/images/frames/kuubera-frame-07.webp",
+        alt: "Kuubera Pure Veg Restaurant Entrance & Dining Hall",
+        className: "absolute inset-0 w-full h-full object-cover opacity-35 scale-105 animate-subtleZoom pointer-events-none"
+      }),
       activeVideo
         ? h("video", {
             ref: videoRef,
             key: activeVideo.file,
             src: activeVideo.file,
+            poster: "./assets/images/frames/kuubera-frame-07.webp",
             autoPlay: true,
             muted: isMuted,
             playsInline: true,
             onEnded: handleNextVideo,
             onError: handleNextVideo,
-            className: "absolute inset-0 w-full h-full object-cover opacity-55 transition-opacity duration-700"
+            className: "absolute inset-0 w-full h-full object-cover opacity-45 transition-opacity duration-700"
           })
         : null,
 
-      // Dark Royal-Blue Overlay for High Contrast Readability
+      // Refined Cinematic Midnight Navy Overlay for High Contrast Readability
       h("div", {
         className:
-          "absolute inset-0 bg-gradient-to-b from-[#091735]/85 via-[#10265C]/75 to-[#091735]/95 pointer-events-none"
+          "absolute inset-0 bg-gradient-to-b from-[#09132D]/85 via-[#101C46]/75 to-[#09132D]/95 pointer-events-none"
       }),
 
-      // Subtle Gold Decorative Outer Frame Border
+      // Restrained 1px Antique Gold Architectural Frame
       h(
         "div",
         {
           className:
-            "absolute inset-4 sm:inset-7 md:inset-10 border border-[#D4AF37]/45 pointer-events-none z-10",
+            "absolute inset-5 sm:inset-8 md:inset-12 border border-[#C6A15B]/25 pointer-events-none z-10",
           "aria-hidden": "true"
-        },
-        h("div", { className: "absolute -top-1 -left-1 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]" }),
-        h("div", { className: "absolute -top-1 -right-1 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]" }),
-        h("div", { className: "absolute -bottom-1 -left-1 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]" }),
-        h("div", { className: "absolute -bottom-1 -right-1 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]" })
+        }
       ),
 
       // Hero Content Container
       h(
         "div",
         { className: "relative z-20 max-w-4xl mx-auto text-center px-4 sm:px-8 py-10 animate-heroEntrance" },
-        // Official Kuubera Pure Veg Logo Crest Showcase (Royal Blue & Gold Reference Lockup)
+        // Official Kuubera Pure Veg Logo Lockup
         h(
           "div",
-          { className: "mb-6 flex justify-center" },
+          { className: "mb-7 flex justify-center" },
           h(
             "div",
             {
               className:
-                "inline-flex items-center justify-center px-6 py-3.5 rounded-sm bg-[#10265C]/95 border border-[#D4AF37]/80 shadow-[0_10px_35px_rgba(0,0,0,0.65)]"
+                "inline-flex items-center justify-center px-6 py-3 rounded-sm bg-[#09132D]/80 border border-[#C6A15B]/45 backdrop-blur-md shadow-2xl"
             },
             h(KuuberaLogo, { size: "lg" })
           )
         ),
 
-        // Top Royal Badge
+        // Top Location Pill
         h(
           "div",
           {
             className:
-              "inline-flex items-center gap-2.5 px-4 py-1.5 mb-6 rounded-sm bg-[#091735]/85 border border-[#D4AF37]/60 shadow-[0_0_25px_rgba(212,175,55,0.18)]"
+              "inline-flex items-center gap-2.5 px-4 py-1.5 mb-6 rounded-sm bg-[#101C46]/80 border border-[#C6A15B]/35"
           },
-          h("span", { className: "w-2 h-2 rounded-full bg-emerald-500 animate-pulse" }),
+          h("span", { className: "w-1.5 h-1.5 rounded-full bg-[#C6A15B]" }),
           h(
             "span",
-            { className: "text-[11px] sm:text-xs font-semibold uppercase tracking-[0.28em] text-[#E8D7A5]" },
-            "KUUBERA PURE VEG • VARVE BUDRUK, PUNE"
+            { className: "text-[11px] sm:text-xs font-medium uppercase tracking-[0.28em] text-[#C6A15B]" },
+            "ELEVATED PURE VEGETARIAN DINING • VARVE BUDRUK, PUNE"
           )
         ),
 
-        // Main Heading
+        // Main Heading (Elegant Serif Display Typography)
         h(
           "h1",
           {
             className:
-              "font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-[0.14em] leading-[1.15] gold-metallic-text drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
+              "font-serif text-4xl sm:text-6xl md:text-7xl font-semibold uppercase tracking-[0.08em] leading-[1.1] text-[#F8F5ED] drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]"
           },
           "AN EXPERIENCE BEYOND ORDINARY"
         ),
 
         h(GoldOrnamentDivider, { className: "my-6" }),
 
-        // Subheading
+        // Supporting Tagline
         h(
           "p",
           {
             className:
-              "font-sans text-lg sm:text-2xl md:text-3xl text-[#E8D7A5] font-semibold uppercase tracking-[0.12em] mb-5"
+              "font-serif italic text-2xl sm:text-3xl md:text-4xl text-[#C6A15B] font-medium tracking-wide mb-5"
           },
           "Where Every Meal Becomes a Royal Experience."
         ),
@@ -172,12 +174,12 @@
           "p",
           {
             className:
-              "font-sans text-sm sm:text-base md:text-lg text-[#FFF9EF]/90 max-w-2xl mx-auto leading-relaxed mb-10 font-light"
+              "font-sans text-sm sm:text-base md:text-lg text-[#F8F5ED]/85 max-w-2xl mx-auto leading-relaxed mb-10 font-light"
           },
-          "Discover the joy of pure vegetarian dining at Kuubera. From authentic Indian favourites to delicious multi-cuisine creations, experience food, hospitality and togetherness."
+          "Discover exceptional vegetarian cuisine, warm hospitality and memorable dining experiences at Kuubera."
         ),
 
-        // Action Buttons: EXPLORE OUR MENU & FIND US
+        // Action Buttons: Explore Our Menu & Find Us
         h(
           "div",
           { className: "flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6" },
@@ -187,9 +189,9 @@
               type: "button",
               onClick: onExploreMenu,
               className:
-                "w-full sm:w-auto min-w-[220px] px-8 py-4 text-xs sm:text-sm font-semibold tracking-[0.22em] uppercase bg-[#8B1726] text-[#FFF9EF] border border-[#D4AF37] rounded-sm shadow-[0_8px_25px_rgba(139,23,38,0.5)] hover:bg-[#a41d2e] hover:shadow-[0_0_25px_rgba(212,175,55,0.45)] hover:-translate-y-0.5 transition-all duration-300"
+                "w-full sm:w-auto min-w-[220px] px-8 py-4 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase bg-[#8D2028] text-[#FFFFFF] border border-[#C6A15B]/70 rounded-sm shadow-lg hover:bg-[#a1252e] hover:-translate-y-0.5 transition-all duration-300"
             },
-            "EXPLORE OUR MENU"
+            "Explore Our Menu"
           ),
           h(
             "button",
@@ -197,9 +199,9 @@
               type: "button",
               onClick: onFindUs,
               className:
-                "w-full sm:w-auto min-w-[220px] px-8 py-4 text-xs sm:text-sm font-semibold tracking-[0.22em] uppercase bg-[#10265C]/80 text-[#D4AF37] border border-[#D4AF37] rounded-sm hover:bg-[#D4AF37] hover:text-[#091735] hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm"
+                "w-full sm:w-auto min-w-[220px] px-8 py-4 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase bg-[#101C46]/85 text-[#F8F5ED] border border-[#C6A15B]/70 rounded-sm hover:bg-[#C6A15B] hover:text-[#09132D] hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm"
             },
-            "FIND US"
+            "Find Us"
           )
         ),
 

@@ -38,7 +38,7 @@ window.KUUBERA_SIGNATURE_DISHES = [
     badge: "South Indian Classic • 7AM–10:30PM",
     description: "Crisp golden fermented rice-and-lentil crepe filled with spiced potato masala, served with fresh coconut chutney and piping hot sambar.",
     reviewNote: "Praised in guest reviews for crisp preparation and authentic South Indian flavour.",
-    image: "",
+    image: "./assets/images/menu/masala-dosa.webp",
     recommendedImagePath: "assets/images/menu/masala-dosa.webp"
   },
   {
@@ -53,7 +53,7 @@ window.KUUBERA_SIGNATURE_DISHES = [
     badge: "Maharashtrian Favourite",
     description: "Traditional spiced sprouted usal curry topped with crunchy farsan, onions, fresh coriander, and lemon, served with soft pav.",
     reviewNote: "A signature highway stop favourite near Khed Shivapur.",
-    image: "",
+    image: "./assets/images/menu/misal-pav.webp",
     recommendedImagePath: "assets/images/menu/misal-pav.webp"
   },
   {
@@ -68,7 +68,7 @@ window.KUUBERA_SIGNATURE_DISHES = [
     badge: "Tandoori Starter Speciality",
     description: "Succulent cubes of fresh cottage cheese marinated in spiced hung curd and roasted in the clay tandoor with bell peppers and aromatics.",
     reviewNote: "Also available in Lasuni, Pudina, Malai, Achari & Jungli Tikka.",
-    image: "",
+    image: "./assets/images/menu/paneer-tikka.webp",
     recommendedImagePath: "assets/images/menu/paneer-tikka.webp"
   },
   {
@@ -83,7 +83,7 @@ window.KUUBERA_SIGNATURE_DISHES = [
     badge: "Punjabi Favourite • 11AM–11:30PM",
     description: "Fluffy golden fried bhature breads paired with slow-simmered Amritsari-style spiced chickpea masala, tangy pickle, and accompaniments.",
     reviewNote: "Hearty, generous portion size ideal for family sharing.",
-    image: "",
+    image: "./assets/images/menu/chole-bhature.webp",
     recommendedImagePath: "assets/images/menu/chole-bhature.webp"
   },
   {
@@ -98,7 +98,7 @@ window.KUUBERA_SIGNATURE_DISHES = [
     badge: "Chef's Signature Gravy",
     description: "Soft cottage cheese cubes simmered in a rich, velvety tomato-cashew butter gravy finished with aromatic kasuri methi and fresh cream.",
     reviewNote: "Pairs effortlessly with hot Butter Naan or Tandoori Butter Roti.",
-    image: "",
+    image: "./assets/images/menu/paneer-butter-masala.webp",
     recommendedImagePath: "assets/images/menu/paneer-butter-masala.webp"
   },
   {
@@ -113,7 +113,7 @@ window.KUUBERA_SIGNATURE_DISHES = [
     badge: "Slow-Simmered Classic",
     description: "Whole black lentils and red kidney beans slow-cooked with tomatoes, ginger, butter, and fresh cream for a rich, comforting delicacy.",
     reviewNote: "A staple North Indian accompaniment for Jeera Rice and Tandoori Rotis.",
-    image: "",
+    image: "./assets/images/menu/dal-makhani.webp",
     recommendedImagePath: "assets/images/menu/dal-makhani.webp"
   }
 ];

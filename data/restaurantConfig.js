@@ -66,30 +66,28 @@ window.KUUBERA_CONFIG = {
     ]
   },
 
-  // Owner-Replaceable Primary Brand Photographs
-  // Replace the `imageUrl` string with your own photo path (e.g., "assets/images/hero-interior.webp")
-  // Set `isOwnerPhotoUploaded: true` once you replace a placeholder with an actual Kuubera photo.
+  // Authentic Kuubera Brand Photographs (Extracted from Official @_kuubera_ Reels)
   brandImages: {
     heroBackground: {
-      imageUrl: "", // e.g., "assets/images/kuubera-hero-interior.webp"
-      isOwnerPhotoUploaded: false,
-      recommendedPath: "assets/images/kuubera-hero-interior.webp",
-      title: "Kuubera Grand Dining Interior / Signature Feast",
-      note: "OWNER ACTION REQUIRED: Place high-resolution Kuubera interior or signature food photo at assets/images/kuubera-hero-interior.webp"
+      imageUrl: "./assets/images/frames/kuubera-frame-07.webp",
+      isOwnerPhotoUploaded: true,
+      recommendedPath: "assets/images/frames/kuubera-frame-07.webp",
+      title: "Kuubera Pure Veg Grand Entrance & Dining Hall",
+      note: "Authentic @_kuubera_ restaurant entrance and dining interior"
     },
     aboutSectionPhoto: {
-      imageUrl: "", // e.g., "assets/images/kuubera-about-dining.webp"
-      isOwnerPhotoUploaded: false,
-      recommendedPath: "assets/images/kuubera-about-dining.webp",
+      imageUrl: "./assets/images/frames/kuubera-frame-10.webp",
+      isOwnerPhotoUploaded: true,
+      recommendedPath: "assets/images/frames/kuubera-frame-10.webp",
       title: "Kuubera Pure Veg Ambience & Family Dining Area",
-      note: "OWNER ACTION REQUIRED: Place actual Kuubera interior/entrance photograph at assets/images/kuubera-about-dining.webp"
+      note: "Authentic @_kuubera_ spacious dining interior and mandala window"
     },
     specialExperiencePhoto: {
-      imageUrl: "", // e.g., "assets/images/kuubera-special-experience.webp"
-      isOwnerPhotoUploaded: false,
-      recommendedPath: "assets/images/kuubera-special-experience.webp",
-      title: "Family Gatherings & Evening Ambience at Kuubera",
-      note: "OWNER ACTION REQUIRED: Place actual Kuubera restaurant photograph at assets/images/kuubera-special-experience.webp"
+      imageUrl: "./assets/images/frames/kuubera-frame-20.webp",
+      isOwnerPhotoUploaded: true,
+      recommendedPath: "assets/images/frames/kuubera-frame-20.webp",
+      title: "Family Gatherings & Scenic Dining at Kuubera",
+      note: "Authentic @_kuubera_ family dining experience"
     }
   }
 };
